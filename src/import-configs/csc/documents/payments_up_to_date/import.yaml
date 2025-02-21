@@ -1,0 +1,33 @@
+kind: CorrespondenceImport
+spec:
+    templates:
+        -   identifier: PAYMENTS_UP_TO_DATE
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v1/subject.txt
+            templateFile: ./v1/template.html
+            version: 1
+        -   identifier: PAYMENTS_UP_TO_DATE
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v2/subject.txt
+            templateFile: ./v2/template.html
+            version: 2
+        -   identifier: PAYMENTS_UP_TO_DATE
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v3/subject.txt
+            templateFile: ./v3/template.html
+            version: 3
+        -   identifier: PAYMENTS_UP_TO_DATE
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v4/subject.txt
+            templateFile: ./v4/template.html
+            version: 4
+        -   identifier: PAYMENTS_UP_TO_DATE
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v5/subject.txt
+            templateFile: ./v5/template.html
+            version: 5
+        -   identifier: PAYMENTS_UP_TO_DATE
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v6/subject.txt
+            templateFile: ./v6/template.html
+            version: 6

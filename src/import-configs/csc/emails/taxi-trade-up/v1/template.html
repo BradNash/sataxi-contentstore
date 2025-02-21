@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        {% include "SATAXI_EMAIL_STYLE_LATEST" %}
+        <title>{{TITLE}}</title>
+        {% include "SATAXI_EMAIL_HEADER_LATEST" %}
+        <br />
+    </head>
+
+    <body>
+        <p>To whom it may Concern</p>
+        <table>
+            <tr>
+                <th class="text-align">Client Name:</th>
+                <th class="text-align">{{CLIENT_NAME}}</th>
+            </tr>
+            <tr>
+                <th class="text-align">Client ID No:</th>
+                <th class="text-align">{{CLIENT_ID_NO}}</th>
+            </tr>
+            <tr>
+                <th class="text-align">Contact Number:</th>
+                <th class="text-align">{{CONTACT_NUMBER}}</th>
+            </tr>
+            <tr>
+                <th class="text-align">Engine Number:</th>
+                <th class="text-align">{{ENGINE_NUMBER}}</th>
+            </tr>
+            <tr>
+                <th class="text-align">Chassis Number:</th>
+                <th class="text-align">{{CHASSIS_NUMBER}}</th>
+            </tr>
+            <tr>
+                <th class="text-align">Finance Deal Account No:</th>
+                <th class="text-align">{{DEAL_ACCOUNT_NO}}</th>
+            </tr>
+            <tr>
+                <th class="text-align">Settlement Amount:</th>
+                <th class="text-align">{{SETTLEMENT_AMOUNT}}</th>
+            </tr>
+            <tr>
+                <th class="text-align">Appointment Date:</th>
+                <th class="text-align">{{APPOINTMENT_DATE}}</th>
+            </tr>
+            <tr>
+                <th class="text-align">Appointment Time:</th>
+                <th class="text-align">{{APPOINTMENT_TIME}}</th>
+            </tr>
+        </table>
+        <br />
+        <p>
+            This letter serves to confirm that the client has accepted the offer to Trade Up his deal based on the Trade
+            Up offer but will not be financing another vehicle.
+        </p>
+        <p>
+            Should you have any queries with regards to this correspondence, please do
+            not hesitate to contact CSC.
+        </p>
+        <br />
+        <p>Yours faithfully</p>
+        <br />
+        <hr style="width: 300px" align="left" />
+        {{AGENT_NAME}}<br />
+        Customer Service Centre<br />
+        SA Taxi
+    </body>
+    <footer>{% include "SATAXI_EMAIL_FOOTER_LATEST" %}</footer>
+
+</html>

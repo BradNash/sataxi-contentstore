@@ -1,0 +1,1 @@
+Dear {{ FULLNAME }}, we have received your Email enquiry for your GOMO finance deal. Your account query case number is {{ CASE_NO }} for future reference. If you did not send an email, please urgently contact our Customer Service department on 0800 347 247

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        html {
+            margin: 20px;
+            font-family: "Calibri (Body)";
+        }
+
+        h4,
+        h2 {
+            color: #1768b0;
+        }
+
+        div {
+            width: 95%;
+            margin: 10px;
+        }
+
+        .logo {
+            max-width: 300px;
+        }
+
+        .grid {
+            width: 100%;
+            display: grid;
+            border-collapse: separate;
+        }
+
+        .grid-row {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            margin: 0 0 -28px 0;
+        }
+
+        .header{
+            margin: 0;
+        }
+        .body{}
+        .footer{}
+
+        .item {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .item-color {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .document-title h2 {
+            float: right;
+            max-width: 260px;
+        }
+
+        .document-title {
+            text-align: end;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 0.5rem;
+        }
+
+        .blue-fill {
+            background-color: #c1d5e9;
+        }
+
+        .grid-row.stamp {
+            margin-top: 2rem;
+            position: relative;
+            width: 13rem;
+        }
+
+        .stamp img {
+            height: 12rem;
+            width: 13rem;
+        }
+
+        .signature {
+            border-bottom: #333232 dotted 2px;
+        }
+
+        p.date {
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+            position: absolute;
+            top: 33%;
+            margin-left: 20%;
+            color: #565555;
+        }
+
+        .container {
+            display: flex;
+            page-break-inside: avoid;
+        }
+
+        .item {
+            flex-grow: 1; /* default 0 */
+        }
+
+        .stamp {
+            position: relative;
+            width: 13rem;
+            page-break-inside: avoid;
+            padding-top: 2rem;
+        }
+
+        #image {
+            /* the image you want to 'watermark' */
+            height: 12.5rem; /* or whatever, equal to the image you want 'watermarked' */
+            width: 12.5rem; /* as above */
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .stamp p .date {
+            /* the actual 'watermark' */
+            position: absolute;
+            top: 50%; /* or whatever */
+            left: 30%; /* or whatever, position according to taste */
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+        }
+
+        .footer {
+            border: 0.063rem solid;
+            margin-block: 1.3rem;
+            page-break-inside: avoid;
+            margin: -2rem 0;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: small;
+        }
+
+        .keep-together {
+            page-break-inside: avoid;
+        }
+
+        .credit-providers {
+            text-align: right;
+        }
+
+        @media screen and (max-width: 480px) {
+            .grid-row {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+
+            .item {
+                display: block;
+                width: 100%;
+                margin: 0 0 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="grid">
+    <div class="grid-row header">
+            <img class="logo" src="../../python/sataxi/contentstore/common/configs/sataxi-logo-dark.png"/>
+    </div>
+
+    <div class="grid-row body">
+
+    </div>
+
+    <div class="grid-row footer">
+
+    </div>
+
+</div>
+</body>
+</html>

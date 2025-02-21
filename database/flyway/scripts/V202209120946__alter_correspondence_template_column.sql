@@ -1,0 +1,1 @@
+ALTER TABLE correspondence.correspondencetemplate ALTER COLUMN "template" TYPE varchar(50000) USING "template"::varchar;

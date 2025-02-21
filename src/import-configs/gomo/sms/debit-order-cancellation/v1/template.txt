@@ -1,0 +1,1 @@
+GOMO: Dear {{FULLNAME}}, the debit order for account {{REFERENCE_NUMBER}} has been cancelled. Your next installment of R {{AMOUNT}} is due on the {{DUE_DATE}}. For queries, please contact us on 0800347247.

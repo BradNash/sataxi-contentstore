@@ -1,0 +1,1 @@
+ALTER TABLE correspondence.correspondencetemplate ALTER column template TYPE CHARACTER VARYING(5000);

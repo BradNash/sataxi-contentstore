@@ -1,0 +1,117 @@
+html {
+    margin: 20px;
+    font-family: "Calibri (Body)",serif;
+}
+
+h4,
+h2 {
+    color: #1768b0;
+}
+
+div {
+    width: 95%;
+    margin: 10px;
+}
+
+.logo {
+    max-width: 300px;
+}
+
+.grid {
+    width: 100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+
+.grid-row {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    margin: 0 0 -28px 0;
+}
+
+.item-color {
+    display: table-cell;
+    padding: 2%;
+}
+
+.document-title h2 {
+    float: right;
+    max-width: 260px;
+}
+
+.document-title {
+    text-align: end;
+}
+
+table
+{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr {
+    height: 40px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tbody tr td:first-child {
+    width: 40%;
+    border-bottom-style: hidden;
+    padding-left: 15px;
+    background-color: #c1d5e9;
+}
+
+tbody tr td:last-child {
+    border-bottom-style: dotted;
+    border-bottom-width: 2px;
+    padding-left: 10px;
+}
+
+tbody tr:last-child td{
+    border-bottom-style: initial;
+}
+
+.grid-row.stamp {
+    margin-top: 2rem;
+    position: relative;
+    width: 13rem;
+}
+
+.stamp img {
+    height: 12rem;
+    width: 13rem;
+}
+
+p.date {
+    font-weight: 700;
+    font-size: large;
+    font-family: sans-serif;
+    position: absolute;
+    top: 33%;
+    margin-left: 20%;
+    color: #565555;
+}
+
+@media screen and (max-width: 480px) {
+    .grid-row {
+      display: block;
+      width: 100%;
+      margin: 0;
+    }
+}
+
+@media print {
+    @page {
+      size: A4;
+    }
+}

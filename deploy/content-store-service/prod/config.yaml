@@ -1,0 +1,104 @@
+content_rest_service: 
+    # DATABASES
+  Databases: 
+    ContentDB: 
+      ConnectString: DRIVER={PostgreSQL Unicode};SERVER=$[VANGUARD_DB_SERVER_HOST_NAME:postgresql_database],5432;DATABASE=vanguard-contentstore;UID=$[VANGUARD_DB_USER:postgres_admin];PWD=$[VANGUARD_DB_PASSWORD:magical_password];
+      DBType: postgresql_odbc
+    MSG: 
+      ConnectString: DRIVER={PostgreSQL Unicode};SERVER=$[VANGUARD_DB_SERVER_HOST_NAME:postgresql_database],5432;DATABASE=Vanguard;UID=$[VANGUARD_DB_USER:postgres_admin];PWD=$[VANGUARD_DB_PASSWORD:magical_password];
+      DBType: postgresql_odbc
+    HiveRepository: 
+      ConnectString: DRIVER=ODBC Driver 17 for SQL Server;SERVER=SATFAPPHIVE01.SATAXIFIN.LOCAL\SQL2012;UID=svc_vanguard;PWD=gBPjoQHumBQ12vitwn0x;ApplicationIntent=ReadWrite;Database=HiveUAT;
+      DBType: mssql
+    # SECURITY
+  Port: 8080
+  PrincipalServerURI: http://principal.vanguard.prod.sataxi.internal:8080/api/Operations
+  IdentityServerAuthorizeURL: https://identity.sataxi-cloud.co.za/
+  OAuth: 
+    VerifySignature: True
+    ValidateScopes: True
+    JWKSUrl: http://identity.vanguard.prod.sataxi.internal:8080/.well-known/openid-configuration/jwks
+    Audience: vgd.cs
+    # CUSTOM
+  CorrespondenceConfig: 
+    IsProduction: True
+    EmailConfig: 
+      SmtpHost: relay.sataxifin.local
+      SmtpPort: 25
+      SmtpTlsEnabled: False
+      SenderDomain: sataxi.co.za
+      DefaultSenderAddress: customerservice@sataxi.co.za
+    SmsConfig: 
+      Url: http://WEBAPP03_DEV.SATAXIFIN.LOCAL/SMSAPIDev/api/SMS/
+      SystemID: "67"
+      UserID: smndaweni@sataxi.co.za
+  SharedLocationConfig: 
+    SharedVolume: Storage
+    Username: bbdvanguard
+    Password: DubaiSittingTruckRed
+    ServerLocalName: Vanguard
+    ServerName: webapp03
+    SystemID: 60
+    ServerURL: SATFAPPHIVE01.SATAXIFIN.LOCAL
+  MobalyzConfig: 
+    Timeout: 59
+    URL: http://prod-docs-api.sataxifin.local:85/mobalyz/docs/v1/create-pdf
+#    URL: https://prod-docs-api.sataxifin.local/mobalyz/docs/v1/create-pdf
+    ApplicationName: "vanguard"
+    # MESSAGING
+  MessageTypes: 
+    StatementGeneratedV1: 
+      Queue: STATEMENT_GENERATED_V1
+    SendEmailCorrespondenceV1: 
+      Queue: SEND_EMAIL_CORRESPONDENCE_V1
+    UploadContentV1: 
+      Queue: UPLOAD_CONTENT_V1
+    SignioApplicationGeneratedV1: 
+      Queue: SIGNIO_APPLICATION_GENERATED_V1
+    AttachDocumentV1: 
+      Queue: ATTACH_DOCUMENT_V1
+    SendSmsCorrespondenceV1: 
+      Queue: SEND_SMS_CORRESPONDENCE_V1
+  HandleMessages: 
+    - StatementGeneratedV1
+    - UploadContentV1
+    - SignioApplicationGeneratedV1
+    - SendEmailCorrespondenceV1
+    - SendSmsCorrespondenceV1
+  Prompters: 
+    KombuAMQPBroker: 
+      PrompterType: KombuPrompter
+      ConnectionString: $[AMQP_CONNECTIONSTRING:amqp://guest:guest@localhost:5672//]
+      Exchange: $[AMQP_EXCHANGE:Message_Prompts]
+  DefaultPrompter: KombuAMQPBroker
+  DefaultSerializer: bbdcommon.pybus.serialisers.marshmallow_serializer.MarshmallowSerializer
+  PeriodicCheckTime: 250
+    # LOGGING & CORS
+  CORSAllowed: True
+  CORS_Access-Control-Allow-Origin: https://vanguard.sataxi-cloud.co.za
+  CORS_Access-Control-Allow-Headers: x-requested-with, content-type, authorization, x-amzn-trace-id
+  CORS_Access-Control-Expose-Headers: Set-Cookie
+  CORS_Access-Control-Allow-Credentials: true
+  native_logging: 
+    version: 1
+    formatters: 
+      default: 
+        format: $[LOGGING_FORMAT:"%(asctime)s %(levelname)-8s %(name)-15s %(message)s"]
+        datefmt: "%Y-%m-%d %H:%M:%S"
+    handlers: 
+      console: 
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: default
+        stream: ext://sys.stdout
+    loggers: 
+      sqlalchemy: 
+        level: ERROR
+        propagate: True
+      bbdcommon.tornadohelpers.app_service.health_check_handler: 
+        level: WARNING
+        propagate: True
+    root: 
+      handlers: [ console ]
+      level: DEBUG
+      propagate: True

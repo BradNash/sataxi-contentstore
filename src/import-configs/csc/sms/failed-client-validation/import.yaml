@@ -1,0 +1,7 @@
+kind: CorrespondenceImport 
+spec:
+  templates:
+    - identifier: FAILED_VALIDATION_SMS
+      correspondenceType: SMS
+      templateFile: ./v1/template.txt
+      version: 1

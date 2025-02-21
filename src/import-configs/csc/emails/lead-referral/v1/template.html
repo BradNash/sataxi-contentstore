@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include "SATAXI_EMAIL_STYLE_LATEST" %}
+    <title>{{TITLE}}</title> {% include "SATAXI_EMAIL_HEADER_LATEST" %} <br />
+</head>
+
+<body>To whom it may Concern<br />
+    <p>Please refer to Case no. {{CASE_NUMBER}} for a request for vehicle Finance</p>
+    <table>
+        <tr>
+            <th class="text-align">Client Name:</th>
+            <th class="text-align">{{CLIENT_NAME}}</th>
+        </tr>
+        <tr>
+            <th class="text-align">Client Contact:</th>
+            <th class="text-align">{{CLIENT_CONTACT}}</th>
+        </tr>
+        <tr>
+            <th class="text-align">Client ID no.:</th>
+            <th class="text-align">{{CLIENT_ID_NO}}</th>
+        </tr>
+        <tr>
+            <th class="text-align">Vehicle Description:</th>
+            <th class="text-align">{{VEHICLE_DESCRIPTION}}</th>
+        </tr>
+    </table> <br /> {{AGENT_NAME}}<br /> Customer Service Centre<br /> SA Taxi
+</body>
+<footer> {% include "SATAXI_EMAIL_FOOTER_LATEST" %} </footer>
+
+</html>

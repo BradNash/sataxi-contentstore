@@ -1,0 +1,1 @@
+SA Taxi: Dear {{FULLNAME}}, the settlement amount for account {{REFERENCE_NUMBER}} is R {{AMOUNT}} until {{DUE_DATE}}. If you pay this, your contract comes to an end. Tracker and insurance will not be paid for.

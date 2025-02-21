@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include "SATAXI_EMAIL_STYLE_LATEST" %}
+    <br />
+    {% include "SATAXI_EMAIL_HEADER_LATEST" %}
+    <br />
+</head>
+
+<body>
+    <p>Dear Sir/Madam</p>
+    <p>
+        Please find settlement quotation for deceased estate account (<b>{{ACCOUNT_NUMBER}}</b>) attached.
+    </p>
+    <ul>
+        <li>This document is password protected for your safety.</li>
+        <li>To view it, simply open the PDF attachments and use your South African ID number or passport number as
+            your password.
+        </li>
+        <li>You may require <i>Adobe Acrobat Reader</i> on your device to open PDF
+            files. If you do not have this software, you can download it for free on the
+            <a href="https://get.adobe.com/reader/">Adobe website.</a>
+        </li>
+    </ul>
+    <p>
+        <b>
+            NB: This letter serves as a settlement quotation of the deceased estate that you have indicated you would
+            like to take ownership of.
+        </b>
+    </p>
+    <ul>
+        <li>
+            Kindly note that this summary serves solely a quotation for the settlement amount of an existing account,
+            prepared for the purpose of an authorized third party applicant taking over ownership of the account.
+        </li>
+        <li>
+            Please be advised that normal credit application and assessment processes will apply should you want to
+            proceed with the take-over.
+        </li>
+    </ul>
+    <p>
+        To ensure that your credit application is processed without delay, please email the following documents to
+        <a href = "mailto: customerservice@sataxi.co.za?subject=Deceased Take Over Settlement Documents&body=Dear Customer Service">customerservice@sataxi.co.za</a>
+    </p>
+    <ul>
+        <li>A certified copy of your identity document</li>
+        <li>3 months bank statements, certified as true copies</li>
+        <li>
+            Proof of your current residence (Not older than 3 months) and where vehicle will be use as:
+            <br/>
+            <b>Taxi:</b>
+            <ul>
+                <li>Taxi Operating License (Permit)</li>
+                <li>Taxi Association Letter, Confirming your Association membership</li>
+                <li>Taxi Route and Income Form</li>
+            </ul>
+            <b>Private Vehicle</b>
+            <ul>
+                <li>A statement of personal income and monthly expenses</li>
+                <li>Poof of monthly income</li>
+            </ul>
+        </li>
+    </ul>
+    <p>Kind Regards,</p>
+    <hr style="width: 300px" align="left" />
+    SA Taxi Customer service Team<br />
+    <p>For Queries or more information please contact us on:<br />
+        <b>Telephone:</b> 0861829448<br />
+        <b>Email:</b>
+        <a href = "mailto: customerservice@sataxi.co.za?subject=Deceased Take Over Settlement Query&body=Dear Customer Service">customerservice@sataxi.co.za</a>
+    </p>
+</body>
+<footer>{% include "SATAXI_EMAIL_FOOTER_LATEST" %}</footer>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include "SATAXI_EMAIL_STYLE_LATEST" %}
+    <br />
+    {% include "SATAXI_EMAIL_HEADER_LATEST" %}
+    <br />
+</head>
+
+<body>
+    <p>Dear Insurer</p>
+    <p>
+        This quotation document attached gives you the total settlement amount payable.
+        This quotation includes the Capital Amount outstanding at the date of loss to
+        allow you to determine the credit shortfall cover.
+    </p>
+    <ul>
+        <li>This document is password protected for your safety.</li>
+        <li>To view it, simply open the PDF attachments and use your South African ID number or passport number as
+            your password.
+        </li>
+        <li>
+            You may require <i>Adobe Acrobat Reader</i> on your device to open PDF
+            files. If you do not have this software, you can download it for free on the
+             <a href="https://get.adobe.com/reader/">Adobe website</a>
+        </li>
+    </ul>
+    <p>
+        <b>* Where the policy includes credit shortfall cover, the insured value of the vehicle could be increased to
+            cover the credit shortfall between the capital amount due and the insured value of the vehicle. If the
+            policy contains other credit cover, please consult with our Customer Service department to ensure that we
+            provide you with the correct settlement amount.
+        </b>
+    </p>
+    <p>
+        Kind Regards,
+        <hr style="width: 300px" align="left" />
+        SA Taxi Customer service Team<br />
+        For Queries or more information please contact us on:<br />
+        <b>Telephone:</b> 0861829448<br />
+        <b>Email:</b>
+        <a href = "mailto: customerservice@sataxi.co.za?subject=Insurance Settlement Query&body=Dear Customer Service">customerservice@sataxi.co.za</a>
+    </p>
+</body>
+<footer>{% include "SATAXI_EMAIL_FOOTER_LATEST" %}</footer>
+
+</html>

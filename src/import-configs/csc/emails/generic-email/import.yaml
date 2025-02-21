@@ -1,0 +1,13 @@
+kind: CorrespondenceImport
+spec:
+  templates:
+    - identifier: GENERIC_EMAIL
+      correspondenceType: EMAIL
+      subjectHeadingFile: ./v1/subject.txt
+      templateFile: ./v1/template.html
+      version: 1
+    - identifier: GENERIC_EMAIL
+      correspondenceType: EMAIL
+      subjectHeadingFile: ./v2/subject.txt
+      templateFile: ./v2/template.html
+      version: 2

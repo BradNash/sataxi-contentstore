@@ -1,0 +1,28 @@
+kind: CorrespondenceImport
+spec:
+    templates:
+        -   identifier: THIRD_PARTY_CONSENT
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v1/subject.txt
+            templateFile: ./v1/template.html
+            version: 1
+        -   identifier: THIRD_PARTY_CONSENT
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v2/subject.txt
+            templateFile: ./v2/template.html
+            version: 2
+        -   identifier: THIRD_PARTY_CONSENT
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v3/subject.txt
+            templateFile: ./v3/template.html
+            version: 3
+        -   identifier: THIRD_PARTY_CONSENT
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v4/subject.txt
+            templateFile: ./v4/template.html
+            version: 4
+        -   identifier: THIRD_PARTY_CONSENT
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v5/subject.txt
+            templateFile: ./v5/template.html
+            version: 5

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        html {
+            margin: 20px;
+            font-family: "Calibri (Body)";
+        }
+
+        h4,
+        h2 {
+            color: #1768b0;
+        }
+
+        div {
+            width: 100%;
+            margin: 10px;
+        }
+
+        .logo {
+            width: inherit;
+            height: 9rem;
+        }
+
+        .grid {
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border-spacing: 15px;
+        }
+
+        .no-margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid-row {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            margin: 0 0 -28px 0;
+        }
+
+        .item {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .item-color {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .document-title {
+            text-align: end;
+            margin: 0;
+            width: 100%;
+        }
+
+        .document-title h2 {
+            float: right;
+            max-width: 50%;
+            margin: 0;
+            font-size: larger;
+        }
+
+        .blue-fill {
+            background-color: #c1d5e9;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 0.5rem;
+        }
+
+        .blue-fill {
+            background-color: #c1d5e9;
+        }
+
+        .grid-row.stamp {
+            margin-top: 2rem;
+            position: relative;
+            width: 13rem;
+        }
+
+        .stamp img {
+            height: 12rem;
+            width: 13rem;
+        }
+
+        p.date {
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+            position: absolute;
+            top: 33%;
+            margin-left: 20%;
+            color: #565555;
+        }
+
+        .page-footer {
+            width: 100%;
+            font-size: x-small;
+            opacity: 0.25;
+            margin: 0;
+            padding: 0;
+        }
+
+        .check-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .check-box div {
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            border: 1px solid;
+            padding: 3px;
+        }
+
+        .check-box span {
+            margin-right: 4px;
+        }
+
+        @media screen and (max-width: 480px) {
+            .grid-row {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+
+            .item {
+                display: block;
+                width: 100%;
+                margin: 0 0 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="grid">
+    <div class="grid-row">
+        <div class="no-margin-padding">
+            <img class="logo" src="{{SATAXI_LOGO}}"/>
+        </div>
+    </div>
+
+    <div class="grid-row document-title">
+        <h2>Refund Checklist</h2>
+    </div>
+    <br/>
+    <div class="grid-row">
+        <table width="100%">
+            <tr>
+                <td class="blue-fill">
+                    Name of Consultant at CSC submitting Refund Request
+                </td>
+                <td>{{ CONSULTANT_NAME }}</td>
+                <td class="blue-fill">Date of Instruction</td>
+                <td>{{ DATE_OF_INSTRUCTION }}</td>
+            </tr>
+            <tr height="50">
+                <td width="30%" class="blue-fill">Customer Name</td>
+                <td>{{ CUSTOMER_NAME }}</td>
+                <td class="blue-fill">Customer Contact Telephone Number</td>
+                <td>{{ CUSTOMER_CONTACT_NUMBER }}</td>
+            </tr>
+            <tr>
+                <td class="blue-fill">Customer Deal Account Number</td>
+                <td colspan="3">{{ ACCOUNT_NUMBER }}</td>
+            </tr>
+            <tr>
+                <td class="blue-fill">Status Of Account</td>
+                <td colspan="3">{{ STATUS_OF_ACCOUNT}}</td>
+            </tr>
+            <tr>
+                <td class="blue-fill">Provide reason why refund is being requested</td>
+                <td colspan="3">{{ REASON_FOR_REFUND }}</td>
+            </tr>
+        </table>
+        <table width="100%" class="no-top-margin">
+            <tr>
+                <td rowspan="4" width="30%" class="blue-fill">
+                    Specify bank account details to which customer requests refund be
+                    paid
+                </td>
+                <td class="blue-fill">Name of Bank</td>
+                <td><b>{{ BANK_NAME }}</b></td>
+                <td class="blue-fill">Account Number</td>
+                <td><b>{{ BANK_ACCOUNT_NUMBER }}</b></td>
+            </tr>
+            <tr>
+                <td class="blue-fill">Name of Account Holder</td>
+                <td colspan="3"><b>{{ ACCOUNT_HOLDER }}</b></td>
+            </tr>
+            <tr>
+                <td class="blue-fill">
+                    Bank account in same name as Deal Account?
+                </td>
+                <td colspan="2">
+                    <div class="check-box"> Yes
+                        <div>{{ DEAL_NAME_YES }}</div>
+                    </div>
+                </td>
+                <td colspan="2">
+                    <div class="check-box">No
+                        <div>{{ DEAL_NAME_NO }}</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="blue-fill">
+                    Refund for overpaid direct debit/cash & debit order duplication?
+                </td>
+                <td colspan="2">
+                    <div class="check-box"> Yes
+                        <div>{{ REFUND_FOR_OVERPAID_YES }}</div>
+                    </div>
+                </td>
+                <td colspan="2">
+                    <div class="check-box">No
+                        <div>{{ REFUND_FOR_OVERPAID_NO }}</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" class="no-top-margin">
+            <tr>
+                <td class="blue-fill">Required documentation is attached</td>
+                <td>x</td>
+                <td class="blue-fill">Date of confirmation</td>
+                <td colspan="2">{{ CONFIRMATION_DATE }}</td>
+            </tr>
+            <tr height="50">
+                <td width="30%" class="blue-fill">
+                    Name of CSC Supervisor/Manager
+                </td>
+                <td colspan="2"><strong>V. Booi</strong></td>
+                <td width="20%" class="blue-fill">
+                    Signature of Head Client Services
+                </td>
+                <td><img class="signature" src="{{SIGNATURE}}" alt="signature"/></td>
+            </tr>
+        </table>
+    </div>
+    <div class="page-footer" style="margin-top: 1.5rem;">
+        <p>
+        <hr style="color: lightblue">
+        <p>
+        <p style="margin-left: 1rem"><span style="float: left ">Refund Checklist_{{DOCUMENT_REV_DATE|default("25.11.11", true)}}_{{DOC_VERSION|default("3", true)}}</span>
+        <p style="margin-right: 1rem"><span style="float: right ">Page {{PAGE_NUMBER|default("1", true)}} of {{PAGES|default("1", true)}}</span>
+        </p>
+    </div>
+</div>
+</body>
+</html>

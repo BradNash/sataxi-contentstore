@@ -1,0 +1,1 @@
+Dear {{ FULLNAME }}, you have failed validation for an account query case {{ CASE_NO }} on your GOMO finance deal. If this was not you, please urgently contact Customer Service on  0800 347 247

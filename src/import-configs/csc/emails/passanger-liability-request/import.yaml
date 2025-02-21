@@ -1,0 +1,9 @@
+kind: CorrespondenceImport 
+spec:
+  templates:
+    - identifier: PASSENGER_LIABILITY_REQUEST_EMAIL
+      correspondenceType: EMAIL
+      subjectHeadingFile: ./v1/subject.txt
+      templateFile: ./v1/template.html
+      version: 1
+

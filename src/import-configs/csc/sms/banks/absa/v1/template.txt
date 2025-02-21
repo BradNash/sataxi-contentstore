@@ -1,0 +1,1 @@
+SA Taxi: Our banking details at ABSA is: Account Number {{ACCOUNT_NUMBER}}. Branch Code {{BRANCH_CODE}}. Please use {{REFERENCE_NUMBER}} as your reference.

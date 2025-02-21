@@ -1,0 +1,18 @@
+kind: CorrespondenceImport
+spec:
+    templates:
+        -   identifier: GOMO_DOCUMENT_EMAIL_GFS
+            correspondenceType: EMAIL
+            subjectHeadingFile: ./v1/subject.txt
+            templateFile: ./v1/template.html
+            version: 1
+        -   identifier: GOMO_DOCUMENT_EMAIL_GFS
+            correspondenceType: EMAIL
+            subjectHeadingFile: ./v2/subject.txt
+            templateFile: ./v2/template.html
+            version: 2
+        -   identifier: GOMO_DOCUMENT_EMAIL_GFS
+            correspondenceType: EMAIL
+            subjectHeadingFile: ./v3/subject.txt
+            templateFile: ./v3/template.html
+            version: 3

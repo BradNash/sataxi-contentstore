@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      {% include "SATAXI_EMAIL_STYLE_LATEST" %}
+      <title>{{TITLE}}</title>
+      {% include "SATAXI_EMAIL_HEADER_LATEST" %} <br/>
+   </head>
+   <body>
+      To whom it may concern<br/>
+      <br/>
+      {{MESSAGE_BODY}}
+      <ul>
+         <li>This document is password protected for your safety.</li>
+         <li>To view it, simply open the PDF attachments and use your South African ID number or passport number as
+            your password.
+         </li>
+         <li>You may require <i>Adobe Acrobat Reader</i> on your device to open PDF
+            files. If you do not have this software, you can download it for free on the
+            <a href="https://get.adobe.com/reader/"> Adobe website</a>
+         </li>
+      </ul>
+      <br/>{{AGENT_NAME}}<br/> Customer Service Centre<br/> SA Taxi
+   </body>
+   <footer> {% include "SATAXI_EMAIL_FOOTER_LATEST" %}</footer>
+</html>

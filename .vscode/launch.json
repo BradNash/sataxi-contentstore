@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Content Store Service",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/python/sataxi/contentstore/services/content_rest_service.py",
+            "args": [
+                "--configFile",
+                "config.yaml",
+                "--nodeName",
+                "content_rest_service",
+                "--debug_mode",
+                "--safeSendersFile",
+                "correspondence_safe_senders.yaml",
+                "--handlerSearchPath",
+                "${workspaceFolder}/src/python/sataxi/contentstore/messaging/",
+            ],
+            "cwd": "${workspaceFolder}/docker/content-store-service/",
+            "envFile": "${workspaceFolder}/.vscode/.env",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src/python",
+                "WKHTMLTOPDF_PATH": "C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
+            },
+            "justMyCode": false
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include "SATAXI_EMAIL_STYLE_LATEST" %}
+    <br />
+    {% include "SATAXI_EMAIL_HEADER_LATEST" %}
+    <br />
+</head>
+
+<body>
+    <p>Dear {{CLIENT_NAME}}</p>
+    <p>Please find your Early Settlement Quotation attached. </p>
+    <ul>
+        <li>This document is password protected for your safety.</li>
+        <li>To view it, simply open the PDF attachments and use your South African ID number or passport number as
+            your password.
+        </li>
+        <li>You may require <i>Adobe Acrobat Reader</i> on your device to open PDF
+            files. If you do not have this software, you can download it for free on the
+            <a href="https://get.adobe.com/reader/"> Adobe website</a>
+        </li>
+    </ul>
+    <p>
+        <b>
+            NB: By paying the quoted settlement amount, you agree that the vehicle will no longer have vehicle
+            tracking or insurance cover.
+        </b>
+    </p>
+    <ul>
+        <li>
+            <b>Insuring Your Vehicle:</b> It is important that your vehicle is insured after you have settled your
+            Credit Agreement. To arrange insurance on your vehicle, please feel free to contact Insurance department on
+            <b>0800 214 790</b>.
+        </li>
+        <li>
+            <b>Tracking Your Vehicle:</b> To arrange vehicle tracking for your vehicle please contact Cartrack directly
+            on <b>011 250 3000</b>
+        </li>
+    </ul>
+    <p>
+        Kind Regards,
+        <hr style="width: 300px" align="left" />
+        SA Taxi Customer service Team
+        <br />
+        For Queries or more information please contact us on:<br />
+        <b>Telephone:</b> 0861829448<br />
+        <b>Email:</b>
+        <a href = "mailto: customerservice@sataxi.co.za?subject=Ealry Settlement Query&body=Dear Customer Service">customerservice@sataxi.co.za</a>
+    </p>
+</body>
+<footer>{% include "SATAXI_EMAIL_FOOTER_LATEST" %}</footer>
+</html>

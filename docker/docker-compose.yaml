@@ -1,0 +1,117 @@
+version: "3.7"
+name: sataxi-contentstore
+services:
+  jportal2:
+    container_name: content_store_service_jportal2
+    image: 761183306127.dkr.ecr.af-south-1.amazonaws.com/si-gen/jportal2:1.8.17
+    command: |
+      --inputdir /src/interfaces
+      --template-location /jportal2/downloaded_jportal_templates/
+      --template-generator SQLAlchemy:/src/python/sataxi/contentstore/db/
+      --builtin-generator PostgresDDL:/database/generated_sql
+      --download-template-location=/jportal2/downloaded_jportal_templates/
+      --download-template "SQLAlchemy:https://github.com/SI-Gen/jportal2-generator-vanguard-sqlalchemy/archive/refs/tags/1.7.zip|stripBaseDir"
+    volumes:
+      - ../downloaded_jportal_templates:/jportal2/downloaded_jportal_templates/
+      - ../src/interfaces:/src/interfaces
+      - ../src/python/sataxi/contentstore/db/sqlalchemy/sataxi/contentstore:/src/python/sataxi/contentstore/db/sqlalchemy
+      - ../database/generated_sql:/database/generated_sql
+
+  swagger:
+    container_name: content_store_service_swagger
+    image: 761183306127.dkr.ecr.af-south-1.amazonaws.com/swaggerapi/swagger-codegen-cli-v3:3.0.33
+    command: |
+      generate
+      -i /src/python/sataxi/contentstore/services/content_rest_service_apispec.yaml
+      -l typescript-angular
+      -o /src/angular/packages/sataxi/content-store-api/src/lib
+      -c /src/angular/content_rest_service_swagger_config.json
+    volumes:
+      - ../src/python:/src/python
+      - ../src/angular:/src/angular
+
+  tox:
+    container_name: content_store_service_tox
+    image: 761183306127.dkr.ecr.af-south-1.amazonaws.com/sataxi/python-tox:1.0.0
+    environment:
+      AWS_PIP_INDEX_URL: ${AWS_PIP_INDEX_URL}
+    volumes:
+      - ../:/app/tox
+
+  flyway:
+    container_name: content_store_flyway
+    image: flyway/flyway:8.5.10
+    command: migrate
+    environment:
+      VANGUARD_DB_USER: postgres_admin
+      VANGUARD_DB_PASSWORD: magical_password
+      VANGUARD_DB_SERVER_HOST_NAME: postgresql_database
+      VANGUARD_DB_NAME: vanguard-contentstore
+      VANGUARD_MIGRATION_DIRS: /flyway/sql
+    volumes:
+      - ../database/flyway/flyway.conf:/flyway/conf/flyway.conf
+      - ../database/flyway/scripts:/flyway/sql/scripts
+      - ../database/flyway/test-data-scripts:/flyway/sql/test-data-scripts
+    networks:
+      - sataxi_network
+
+  correspondence_importer:
+    container_name: correspondence_importer
+    build:
+      context: ..
+      dockerfile: ./docker/correspondence-importer/Dockerfile
+    volumes:
+      - source: ./correspondence-importer/config.yaml
+        target: /config/config.yaml
+        type: bind
+      - source: ../src/import-configs
+        target: /app/import-configs
+        type: bind
+    environment:
+      CONTENT_CONNECTIONSTRING: DRIVER={PostgreSQL Unicode};SERVER=postgresql_database,5432;DATABASE=vanguard-contentstore;UID=postgres_admin;PWD=magical_password;
+    networks:
+      - sataxi_network
+    depends_on:
+      - "flyway"
+
+  content_store:
+    container_name: content_store
+    build:
+      context: ..
+      dockerfile: ./docker/content-store-service/Dockerfile
+      args:
+        AWS_PIP_INDEX_URL: ${AWS_PIP_INDEX_URL}
+    command: [ "--disable_xray", "--debug_mode" ]
+    volumes:
+      - source: ./content-store-service/config.yaml
+        target: /config/config.yaml
+        type: bind
+      - source: ./content-store-service/correspondence_safe_senders.yaml
+        target: /config/correspondence_safe_senders.yaml
+        type: bind
+    environment:
+      SERVICE_PORT: 8080
+      CONTENT_CONNECTIONSTRING: DRIVER={PostgreSQL Unicode};SERVER=postgresql_database,5432;DATABASE=vanguard-contentstore;UID=postgres_admin;PWD=magical_password;
+      VANGUARD_CONNECTIONSTRING: DRIVER={PostgreSQL Unicode};SERVER=postgresql_database,5432;DATABASE=Vanguard;UID=postgres_admin;PWD=magical_password;
+      PRINCIPAL_SERVER_URI: http://principal:8080/api/Operations
+      JWKS_URL: http://identity:8080/.well-known/openid-configuration/jwks
+      AMQP_CONNECTIONSTRING: amqp://guest:guest@prompt_rabbitmq_broker:5672//
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      OTEL_RESOURCE_ATTRIBUTES: service.name=content-store
+      WKHTMLTOPDF_PATH: /usr/bin/wkhtmltopdf
+    ports:
+      - target: 8080
+        published: 13402
+    healthcheck:
+      test: [ "CMD", "curl", "http://localhost:8080/health_check" ]
+      interval: 5s
+      timeout: 1s
+      retries: 2
+    networks:
+      - sataxi_network
+    depends_on:
+      - "correspondence_importer"
+
+networks:
+  sataxi_network:
+    name: sataxi_network

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        html {
+            margin: 1.25rem;
+            font-family: "Calibri (Body)", serif;
+        }
+
+        h4,
+        h2 {
+            color: #1768b0;
+        }
+
+        div {
+            width: 95%;
+            margin: 0.625rem;
+        }
+
+        .logo {
+            max-width: 18.75rem;
+        }
+
+        .grid {
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border-spacing: 1rem;
+        }
+
+        .grid-row {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            margin: 0 0 -1.75rem 0;
+        }
+
+        .item-color {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .document-title {
+            text-align: end;
+            margin: 0;
+            width: 100%;
+        }
+
+        .document-title h2 {
+            float: right;
+            max-width: 50%;
+            margin: 0;
+            font-size: larger;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid black;
+            page-break-inside: avoid;
+        }
+
+        tr {
+            height: 2.5rem;
+        }
+
+        .two-column tbody tr td:first-child {
+            width: 40%;
+            border-bottom-style: hidden;
+            padding-left: 1rem;
+            background-color: #c1d5e9;
+        }
+
+        .two-column tbody tr td:last-child {
+            border-bottom-style: dotted;
+            border-bottom-width: 0.062rem;
+            padding-left: 0.625rem;
+        }
+
+        .two-column tbody tr:last-child td:last-child {
+            border-bottom-style: dotted;
+        }
+
+        .child-borders {
+            border-collapse: separate;
+            border-style: initial;
+        }
+
+        .multi-option-boxes tr td {
+            text-align: center;
+            padding: 0.313rem;
+            background-color: #c1d5e9;
+        }
+
+        .multi-option-boxes input[type='checkbox'] {
+            width: 1.75rem;
+            height: 1.75rem;
+            vertical-align: middle
+        }
+
+        .id-number-field {
+            border-collapse: separate;
+            border-style: initial;
+            text-align: center;
+        }
+
+        .id-number-field tbody tr td:first-child {
+            width: 25%;
+            border-style: none;
+            text-align: left;
+            padding: 0 0.313rem 0 0;
+        }
+
+        .id-number-field td {
+            padding: 0.313rem;
+            border-style: solid;
+        }
+
+        .witness-section tbody {
+            border-style: hidden;
+        }
+
+        .witness-section tr {
+            height: 1.875rem;
+        }
+
+        .small-top-margin {
+            margin-top: 1rem;
+        }
+
+        .medium-top-margin {
+            margin-top: 2rem;
+        }
+
+        .large-top-margin {
+            margin-top: 3rem;
+        }
+
+        .grid-row.stamp {
+            margin-top: 2rem;
+            position: relative;
+            width: 13rem;
+            page-break-inside: avoid;
+        }
+
+        .stamp {
+            position: relative;
+            height: 12rem;
+            width: 13rem;
+            page-break-inside: avoid;
+        }
+
+        .stamp img {
+            height: 12rem;
+            width: 13rem;
+        }
+
+        .stamp .date {
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+            color: #565555;
+            position: absolute;
+            left: 25%;
+            top: 33%;
+        }
+
+        .signature {
+            border-bottom: #333232 dotted 0.125rem;
+        }
+
+        .footer {
+            border: 0.063rem solid;
+            margin-block: 1.3rem;
+            margin: 3rem 0rem;
+            page-break-inside: avoid;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: small;
+        } 
+
+        .keep-together {
+            page-break-inside: avoid;
+        }
+
+        .currency::before {
+            font-weight: bold;
+            content: "R ";
+        }
+
+        .container {
+            display: flex;
+            page-break-inside: avoid;
+        }
+
+        .item {
+            flex-grow: 1;
+            /* default 0 */
+        }
+
+        .credit-providers {
+            text-align: right;
+        }
+
+
+        @media screen and (max-width: 30rem) {
+            .grid-row {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+        @media print {
+            .keep-together {
+                page-break-inside: avoid;
+            }
+
+            @page {
+                size: A4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid">
+        <div class="grid-row">
+            <div class="item-color">
+                <img class="logo" src="{{SATAXI_LOGO}}" />
+            </div>
+        </div>
+
+        <div class="grid-row document-title">
+            <h2>
+                Consent for Nominated 3rd Party to Transact on Behalf of Account
+                Holder
+            </h2>
+        </div>
+
+        <div class="grid-row">
+            <div class="item-color">
+                <p>
+                    By completing this form, you will allow us to share your information
+                    with any third party you nominate.
+                    <br />
+                    <br />
+                    This document gives the SA Taxi Group* permission to make certain
+                    information available to the named third party. You agree that by
+                    making this information available, the SA Taxi Group* are not
+                    responsible for any loss, whether direct, indirect or because of
+                    disclosing the information. You agree that the named third parties
+                    receiving this information may not hold the SA Taxi Group*
+                    responsible for any claims that result from the wrongful use or
+                    disclosure of the information by the named third parties. You agree
+                    that once you have given permission, the SA Taxi Group* may give all
+                    the information that falls under the below-mentioned type of
+                    information to the named third parties. This permission will end on
+                    the date that the Deal Account is terminated.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <h4 style="margin: 0">About the Deal Account</h4>
+            <table class="two-column" aria-hidden="true">
+                <tr>
+                    <td>Deal account number</td>
+                    <td>{{ ACCOUNT_NUMBER }}</td>
+                </tr>
+                <tr>
+                    <td>Name in which account is held</td>
+                    <td>{{ ACCOUNT_HOLDER }}</td>
+                </tr>
+                <tr>
+                    <td>Account holder's ID number / Passport number</td>
+                    <td>{{ CLIENT_ID_NO }}</td>
+                </tr>
+                <tr>
+                    <td>Account holder's physical address</td>
+                    <td colspan="2" height="40">{{ PHYSICAL_ADDRESS }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="grid-row">
+            <h4 style="margin: 1rem 0 0 0">About the 3<sup>rd</sup> party (to whom we may give specified information)
+            </h4>
+            <table class="two-column" aria-hidden="true">
+                <tr>
+                    <td>Name of 3<sup>rd</sup> party (who will be allowed to transact on account)</td>
+                    <td>{{ THIRD_PARTY_NAME }}</td>
+                </tr>
+                <tr>
+                    <td>3<sup>rd</sup> party’s ID number / Passport number</td>
+                    <td>{{ THIRD_PARTY_ID_NUMBER }}</td>
+                </tr>
+                <tr>
+                    <td>3<sup>rd</sup> party’s contact number</td>
+                    <td>{{ THIRD_PARTY_CONTACT_NUMBER }}</td>
+                </tr>
+                <tr>
+                    <td>3<sup>rd</sup> party’s physical address</td>
+                    <td colspan="2" height="40">{{ THIRD_PARTY_PHYSICAL_ADDRESS }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="grid-row">
+            <h4 style="margin: 1rem 0 0 0">Declaration of Deal Account Holder</h4>
+            <div>
+                <p>
+                    I, the undersigned, ____________________________________________________ ,
+                    (being the account holder named in the above section <i>“About the Deal Account”</i>)
+                </p>
+                <p>
+                    do hereby appoint ________________________________________________________
+                    (“the 3<sup>rd</sup> party”) (being the person named in the above section <i>“About the
+                        3<sup>rd</sup>
+                        party”</i>)
+                </p>
+                <p>
+                    as the nominated 3<sup>rd</sup> party who I agree can transact on my
+                    behalf, with regard to the above-mentioned Deal Account held in my
+                    name, and for the following transactions, once s/he has suitably
+                    identified her/himself:
+                </p>
+                <ol>
+                    <li>
+                        The 3<sup>rd</sup> party shall be entitled to make any payments, or request
+                        any information, in connection with the account.
+                    </li>
+                    <li>
+                        The 3<sup>rd</sup> party shall be entitled to log claims and disputes between
+                        myself and SA Taxi<sup>*</sup>.
+                    </li>
+                    <li>
+                        The 3<sup>rd</sup> party shall be entitled to carry out and perform in terms
+                        of all arrangements entered into between myself and SA Taxi<sup>*</sup>;
+                    </li>
+                    <li>
+                        The 3<sup>rd</sup> party shall be entitled to transact with regards the
+                        account as I would but <u>will not</u> be entitled to conclude any
+                        further Credit Agreements / amend any of my existing Credit
+                        Agreements with the SA Taxi Group<sup>*</sup>, nor sign any documents on my
+                        behalf.
+                    </li>
+                </ol>
+
+                <div class="keep-together" style="padding: 2rem 0 0 0">
+                    <p>
+                        Signed at ___________________________on this the ___________ day of
+                        __________________ (month), 20 _____ (year)
+                    </p>
+
+                    <p>Signature of Deal Account Holder: _________________________</p>
+                </div>
+
+            </div>
+            <div class="container">
+                <div class="item">
+                    <p>1<sup>st</sup> Witness Signature:__________________________</p>
+                    <p>Witness Name:______________________</p>
+                    <p>Witness ID Number:___________________________</p>
+                </div>
+                <div class="item">
+                    <p>2<sup>nd</sup> Witness Signature:__________________________
+                    <p>
+                    <p>Witness Name:______________________</p>
+                    <p>Witness ID Number:___________________________</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-row footer" style="padding: 0.25rem">
+        <p>{{ DOCUMENT_FOOTER }}</p>
+    </div>
+    </div>
+</body>
+
+</html>

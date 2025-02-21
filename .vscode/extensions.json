@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "streetsidesoftware.code-spell-checker",
+    "ms-azuretools.vscode-docker",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "BBDSoftware.si-language-support",
+    "magicstack.MagicPython",
+    "ms-python.vscode-pylance",
+    "KevinRose.vsc-python-indent"
+  ]
+}

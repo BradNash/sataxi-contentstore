@@ -1,0 +1,15 @@
+kind: CorrespondenceImport 
+spec:
+  templates:
+    - identifier: DURBAN_BRANCH_SMS
+      correspondenceType: SMS
+      templateFile: ./v1/template.txt
+      version: 1
+    - identifier: DURBAN_BRANCH_SMS
+      correspondenceType: SMS
+      templateFile: ./v1/template.txt
+      version: 2
+    - identifier: DURBAN_BRANCH_SMS
+      correspondenceType: SMS
+      templateFile: ./v1/template.txt
+      version: 3

@@ -1,0 +1,7 @@
+kind: CorrespondenceImport 
+spec:
+  templateSnippets:
+    - identifier: SATAXI_EMAIL_STYLE
+      correspondenceType: EMAIL
+      templateFile: ./v1/template-snippet.html
+      version: 1

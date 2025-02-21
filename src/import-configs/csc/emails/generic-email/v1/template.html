@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        {% include "SATAXI_EMAIL_STYLE_LATEST" %}
+        <title>{{TITLE}}</title> {% include "SATAXI_EMAIL_HEADER_LATEST" %} <br />
+    </head>
+
+    <body>To whom it may concern<br />
+        <br />
+        {{MESSAGE_BODY}}
+        <br />{{AGENT_NAME}}<br /> Customer Service Centre<br /> SA Taxi
+    </body>
+    <footer> {% include "SATAXI_EMAIL_FOOTER_LATEST" %} </footer>
+
+</html>

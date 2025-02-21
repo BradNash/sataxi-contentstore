@@ -1,0 +1,1 @@
+GOMO: Dear {{FULLNAME}}, as per your request the due date for the account {{REFERENCE_NUMBER}} has been changed to the {{INSTALLMENT_DATE}} of every month. Your next installment of R {{AMOUNT}} is due on the {{DUE_DATE}}.

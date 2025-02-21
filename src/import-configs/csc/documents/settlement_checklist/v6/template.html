@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        html {
+            margin: 20px;
+            font-family: "Calibri (Body)";
+        }
+
+        h4,
+        h2 {
+            color: #1768b0;
+        }
+
+        div {
+            width: 100%;
+            margin: 10px;
+        }
+
+        .logo {
+            width: inherit;
+            height: 9rem;
+        }
+
+        .grid {
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border-spacing: 15px;
+        }
+
+        .no-margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid-row {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            margin: 0 0 -28px 0;
+        }
+
+        .item {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .item-color {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .document-title {
+            text-align: end;
+            margin: 0;
+            width: 100%;
+        }
+
+        .document-title h2 {
+            float: right;
+            max-width: 50%;
+            margin: 0;
+            font-size: larger;
+        }
+
+        .blue-fill {
+            background-color: #c1d5e9;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 0.5rem;
+        }
+
+        .blue-fill {
+            background-color: #c1d5e9;
+        }
+
+        .grid-row.stamp {
+            margin-top: 2rem;
+            position: relative;
+            width: 13rem;
+        }
+
+        .stamp img {
+            height: 12rem;
+            width: 13rem;
+        }
+
+        p.date {
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+            position: absolute;
+            top: 33%;
+            margin-left: 20%;
+            color: #565555;
+        }
+
+        .page-footer {
+            width: 100%;
+            font-size: x-small;
+            opacity: 0.25;
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            min-width: 50px;
+            height: 50px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media screen and (max-width: 480px) {
+            .grid-row {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+
+            .item {
+                display: block;
+                width: 100%;
+                margin: 0 0 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="grid">
+    <div class="grid-row">
+        <div class="no-margin-padding">
+            <img class="logo" src="{{SATAXI_LOGO}}"/>
+        </div>
+    </div>
+
+    <div class="grid-row document-title">
+        <h2>Settlement Checklist</h2>
+    </div>
+    <br/>
+    <div class="grid-row">
+        <table width="100%">
+            <tr>
+                <td class="blue-fill">Customer Service Centre</td>
+                <td colspan="6">Gauteng (Head Office)</td>
+            </tr>
+            <tr>
+                <td class="blue-fill">Customer Name</td>
+                <td colspan="3">{{ CUSTOMER_NAME }}</td>
+                <td class="blue-fill">Date of application</td>
+                <td colspan="3">{{ DATE_OF_APPLICATION }}</td>
+            </tr>
+            <tr>
+                <td class="blue-fill">Customer Deal Account Number</td>
+                <td colspan="6">{{ CUSTOMER_ACCOUNT_NUMBER }}</td>
+            </tr>
+            <tr>
+                <td class="blue-fill">
+                    Tick to confirm type of Settlement being processed
+                </td>
+                <td class="blue-fill">Early Settlement</td>
+                <td>
+                    <div class="box center">{{ EARLY_SETTLEMENT }}</div>
+                </td>
+                <td class="blue-fill">Insurance Settlement</td>
+                <td>
+                    <div class="box center">{{ INSURANCE_SETTLEMENT }}</div>
+                </td>
+                <td class="blue-fill">Credit Life Settlement</td>
+                <td>
+                    <div class="box center">{{ CREDIT_LIFE_SETTLEMENT }}</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="blue-fill">
+                    Name of person at CSC submitting Request for Settlement
+                </td>
+                <td colspan="7"><strong>{{NAME_OF_REQUESTER}}</strong></td>
+            </tr>
+            <tr height="50">
+                <td width="30%" class="blue-fill">
+                    Name of Manager/Supervisor confirming processing of settlement may
+                    proceed
+                </td>
+                <td colspan="3"><strong>V. Booi</strong></td>
+                <td colspan="2" class="blue-fill">
+                    Signature of Head Client Services
+                </td>
+                <td><img src="{{SIGNATURE}}" alt="signature"/></td>
+            </tr>
+            <tr>
+                <td class="blue-fill">
+                    Date Request was submitted to Collections Administration for
+                    capturing/processing
+                </td>
+                <td colspan="7"><strong>{{ DATE_SUBMITTED }}</strong></td>
+            </tr>
+        </table>
+    </div>
+    <div class="page-footer" style="margin-top: 1.5rem">
+        <p style="margin-left: 1rem"><span style="float: left ">Settlement Checklist_{{DOCUMENT_REV_DATE|default("20.02.12", true)}}_{{DOC_VERSION|default("2", true)}}</span>
+        <p style="margin-right: 1rem"><span style="float: right ">Page {{PAGE_NUMBER|default("1", true)}} of {{PAGES|default("1", true)}}</span>
+        </p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        html {
+            margin: 20px;
+            font-family: "Calibri (Body)";
+        }
+
+        h4,
+        h2 {
+            color: #1768b0;
+        }
+
+        div {
+            width: 100%;
+            margin: 10px;
+        }
+
+        .logo {
+            height: 9rem;
+			width: inherit;
+        }
+
+        .grid {
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border-spacing: 15px;
+        }
+
+        .no-margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid-row {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            margin: 0 0 -28px 0;
+        }
+
+        .item {
+            display: table-cell;
+            padding: 1%;
+            flex-grow: 1; /* default 0 */
+        }
+
+        .item-color {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .document-title {
+            text-align: end;
+            margin: 0;
+            width: 100%;
+        }
+
+        .document-title h2 {
+            float: right;
+            max-width: 50%;
+            margin: 0;
+            font-size: larger;
+        }
+
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            font-weight: 600;
+            padding-inline: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 1rem;
+            border-style: inherit;
+        }
+
+        table td {
+            border-style: inherit;
+        }
+
+        /*!* First column*!*/
+        /*table tr:first-child td:first-child {*/
+        /*    background-color: #BFBFBF;*/
+        /*    width: 3rem;*/
+        /*}*/
+
+        table tr.first-col td {
+            background-color: #BFBFBF;
+            width: 3rem;
+            text-align: center;
+        }
+
+        /*!*Second column*!*/
+        /*table tr:nth-child(even) td:nth-child(odd) {*/
+        /*    background-color: #E8E8E8;*/
+        /*    height: 2.5rem;*/
+        /*    width: 40%;*/
+        /*    border-style: hidden;*/
+        /*    border-right-style: dotted;*/
+        /*}*/
+
+        table tr td.second-col {
+            background-color: #E8E8E8;
+            height: 2.5rem;
+            width: 40%;
+            border-style: hidden;
+            border-right-style: dotted;
+            padding-left: 1rem;
+        }
+
+        /*!*Last column*!*/
+        /*table tr:nth-child(even) td:nth-child(even) {*/
+        /*    height: 2.5rem;*/
+        /*    border-style: dotted;*/
+        /*}*/
+
+        table tr td.third-col {
+            height: 2.5rem;
+            border-style: dotted;
+            padding-left: 1rem;
+        }
+
+        .stamp {
+            position: relative;
+            width: 13rem;
+            page-break-inside: avoid;
+            padding-top: 2rem;
+            margin-right: 0;
+            padding-right: 0;
+        }
+
+        .stamp img {
+            height: 12rem;
+            width: 13rem;
+        }
+
+        .grid-row.stamp {
+            margin-top: 2rem;
+            position: relative;
+            width: 13rem;
+        }
+
+        .signature {
+            border-bottom: #333232 dotted 2px;
+        }
+
+        .header {
+            margin: 0;
+            width: 100%;
+        }
+
+        .footer {
+            border: 0.063rem solid;
+            page-break-inside: avoid;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: x-small;
+        }
+
+        .keep-together {
+            page-break-inside: avoid;
+        }
+
+        p.date {
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+            position: absolute;
+            top: 33%;
+            margin-left: 20%;
+            color: #565555;
+        }
+
+        .container {
+            display: flex;
+            page-break-inside: avoid;
+            width: 100%;
+        }
+
+        .item {
+            flex-grow: 1;
+            /* default 0 */
+        }
+
+        .large-top-margin {
+            margin-top: 3rem;
+        }
+
+        .currency::before {
+            font-weight: bold;
+            content: "R ";
+        }
+
+        .credit-providers {
+            text-align: right;
+        }
+
+        td span {
+            -ms-writing-mode: tb-rl;
+            -webkit-writing-mode: vertical-rl;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: normal;
+        }
+
+        @media screen and (max-width: 480px) {
+            .grid-row {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+
+            .item {
+                display: block;
+                width: 100%;
+                margin: 0 0 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="grid no-margin-padding">
+    <div class="grid-row header">
+        <div class="no-margin-padding">
+            <img class="logo" src="{{SATAXI_LOGO}}"/>
+        </div>
+        <br/>
+        <div class="document-title">
+            <h2 style="color: #595959">Confirmation of Finance Paid In Full</h2>
+        </div>
+    </div>
+
+    <div class="grid-row body">
+        <h4 style="color: black">To whom it may concern</h4>
+        <table class="no-margin-padding">
+            <tr class="first-col">
+                <td rowspan="4" style="width: 3rem">
+                    <span>Client</span>
+                    <span>Details</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="second-col">Name of Client</td>
+                <td class="third-col">{{ CLIENT_FULL_NAME }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td height="18"></td>
+            </tr>
+            <tr class="second-col">
+                <td class="second-col">ID Number of Client</td>
+                <td class="third-col">{{ CLIENT_ID_NO }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td height="18"></td>
+            </tr>
+
+            <tr class="first-col">
+                <td rowspan="4" style="width: 3rem">
+                    <span>Vehicle</span>
+                    <span>Details</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="second-col">Engine Number</td>
+                <td class="third-col">{{ ENGINE_NUMBER }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td height="18"></td>
+            </tr>
+            <tr>
+                <td class="second-col">VIN (Chassis) Number</td>
+                <td class="third-col">{{ CHASSIS_NUMBER }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td height="18"></td>
+            </tr>
+
+
+            <tr class="first-col">
+                <td rowspan="4" style="width: 3rem">
+                    <span>Account</span>
+                    <span>Details</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="second-col">Finance Deal Account Number</td>
+                <td class="third-col">{{ ACCOUNT_NUMBER }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td height="18"></td>
+            </tr>
+            <tr>
+                <td class="second-col">Balance Due and Owing</td>
+                <!--<td>{{ "R{:,.2f}".format(BALANCE_DUE |default("0", true) | float) }}</td>-->
+                <!-- Business rule is to zero amount, proper fix is to update business logic function to pass in zero -->
+                <td class="third-col">{{ "R{:,.2f}".format(0 |default("0", true) | float) }}</td>
+            </tr>
+        </table>
+
+        <p>
+            This letter serves to confirm that all financial obligations have been
+            met with respect to the abovementioned vehicle. There are no further
+            financial obligations due in terms of the Credit Agreement and the
+            account can now be considered <b>Paid in Full</b>
+        </p>
+        <p>
+            Should you have any queries in regard to this correspondence, please
+            do not hesitate to contact us on {{CSC_CONTACT_NUMBER |default("0861 829 448", true)}}.
+        </p>
+
+        <div class="container no-margin-padding">
+            <div class="item no-margin-padding" style="padding: 0">
+                <p>Yours Sincerely</p>
+                <img class="signature" src="{{SIGNATURE}}" alt="signature"/>
+                <p><b>V. Booi</b></p>
+                <p style="margin: 0">Head Client Services</p>
+                <p><i>For and on behalf of Credit Provider – being duly authorised hereto</i></p>
+                <p style="margin: 0">Contact: 011 550 9460</p>
+            </div>
+            <div class="item stamp" id="image">
+                <img src="{{STAMP}}" alt=""/>
+                <p class="date">{{ STAMP_DATE }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-row credit-providers footer" style="border: hidden; margin: -32px 0">
+        <p>
+        <hr style="color: lightblue">
+        <p>
+            <span style="float: left ">Confirmation of Payment in full_{{DOCUMENT_REV_DATE|default("02.12.19",true)}}_{{DOC_VERSION|default("2", true)}}</span>{{
+            DOCUMENT_FOOTER }}
+        <p><i>a Transaction Capital company</i></p>
+        </p>
+        <br/>
+        <p>179 15th Road, Randjespark, Midrand • Box 41888, Craighall, 2024</p>
+        <p>Tel: 0861 829 448 • Fax: 011 447 2885 • Website: www.sataxi.co.za</p>
+        </p>
+    </div>
+</div>
+</body>
+
+</html>

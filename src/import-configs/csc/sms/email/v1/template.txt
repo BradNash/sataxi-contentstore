@@ -1,0 +1,1 @@
+Dear {{ FULLNAME }}, we have received your Email enquiry for your SA Taxi finance deal. Your account query case number is {{ CASE_NO }} for future reference. If you did not send an email, please urgently contact our Customer Service department on 011 550 9460

@@ -1,0 +1,11 @@
+kind: CorrespondenceImport 
+spec:
+  templates:
+    - identifier: GOMO_BANKING_DETAILS_CHANGED
+      correspondenceType: SMS
+      templateFile: ./v1/template.txt
+      version: 1
+    - identifier: GOMO_BANKING_DETAILS_CHANGED
+      correspondenceType: SMS
+      templateFile: ./v2/template.txt
+      version: 2

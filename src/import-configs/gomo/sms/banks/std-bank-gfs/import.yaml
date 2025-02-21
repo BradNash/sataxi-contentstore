@@ -1,0 +1,11 @@
+kind: CorrespondenceImport 
+spec:
+  templates:
+    - identifier: GOMO_STD_BANK_BANK_SMS_GFS
+      correspondenceType: SMS
+      templateFile: ./v1/template.txt
+      version: 1
+    - identifier: GOMO_STD_BANK_BANK_SMS_GFS
+      correspondenceType: SMS
+      templateFile: ./v2/template.txt
+      version: 2

@@ -1,0 +1,1 @@
+We wish to confirm that your banking details for your GOMO vehicle account {{ ACCOUNT_NUMBER }} has been updated as requested. Please contact us on 0800 347 247 for any queries.

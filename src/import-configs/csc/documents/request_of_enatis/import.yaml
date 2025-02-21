@@ -1,0 +1,38 @@
+kind: CorrespondenceImport
+spec:
+    templates:
+        -   identifier: REQUEST_OF_ENATIS
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v1/subject.txt
+            templateFile: ./v1/template.html
+            version: 1
+        -   identifier: REQUEST_OF_ENATIS
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v2/subject.txt
+            templateFile: ./v2/template.html
+            version: 2
+        -   identifier: REQUEST_OF_ENATIS
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v3/subject.txt
+            templateFile: ./v3/template.html
+            version: 3
+        -   identifier: REQUEST_OF_ENATIS
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v4/subject.txt
+            templateFile: ./v4/template.html
+            version: 4
+        -   identifier: REQUEST_OF_ENATIS
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v5/subject.txt
+            templateFile: ./v5/template.html
+            version: 5
+        -   identifier: REQUEST_OF_ENATIS
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v6/subject.txt
+            templateFile: ./v6/template.html
+            version: 6
+        -   identifier: REQUEST_OF_ENATIS
+            correspondenceType: DOCUMENT
+            subjectHeadingFile: ./v7/subject.txt
+            templateFile: ./v7/template.html
+            version: 7

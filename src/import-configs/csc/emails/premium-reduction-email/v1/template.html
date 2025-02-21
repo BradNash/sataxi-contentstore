@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include "SATAXI_EMAIL_STYLE_LATEST" %}
+    <title>{{TITLE}}</title> {% include "SATAXI_EMAIL_HEADER_LATEST" %} <br />
+</head>
+
+<body>To whom it may Concern<br />
+    <p>Please refer to Case no. {{CASE_NUMBER}} for a request for insurance information on deal number {{DEAL_NUMBER}}</p>
+    <table>
+        <tr>
+            <th class="text-align">Client Name:</th>
+            <th class="text-align">{{CLIENT_NAME}}</th>
+        </tr>
+        <tr>
+            <th class="text-align">Client Contact:</th>
+            <th class="text-align">{{CLIENT_CONTACT}}</th>
+        </tr>
+        <tr>
+            <th class="text-align">Chassis Number:</th>
+            <th class="text-align">{{CHASSIS_NUMBER}}</th>
+        </tr>
+        <tr>
+            <th class="text-align">Engine Number:</th>
+            <th class="text-align">{{ENGINE_NUMBER}}</th>
+        </tr>
+        <tr>
+            <th class="text-align">Policy Number:</th>
+            <th class="text-align">{{POLICY_NUMBER}}</th>
+        </tr>
+        <tr>
+            <th class="text-align">Vehicle Registration:</th>
+            <th class="text-align">{{VEHICLE_REGISTRATION}}</th>
+        </tr>
+        <tr>
+            <th class="text-align">Client Email Address:</th>
+            <th class="text-align">{{CLIENT_EMAIL_ADDRESS}}</th>
+        </tr>
+    </table> <br /> {{AGENT_NAME}}<br /> Customer Service Centre<br /> SA Taxi
+</body>
+<footer> {% include "SATAXI_EMAIL_FOOTER_LATEST" %} </footer>
+
+</html>

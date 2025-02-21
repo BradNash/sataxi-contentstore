@@ -1,0 +1,23 @@
+DATABASE HiveUAT
+PACKAGE sataxi.db
+OUTPUT DocData
+SERVER HiveUAT
+SCHEMA dbo
+
+
+TABLE DocData
+    SystemId                INT
+    ViewName                CHAR(50)
+    AccountNumber           CHAR(50)
+    ChassisNumber           CHAR(50)
+    EngineNumber            CHAR(50)
+    RegistrationNumber      CHAR(50)
+    DocPath                 CHAR(-1)
+    Process                 CHAR(-1)
+    UploadDate              DATETIME
+    UploadBy                CHAR(50)
+    CustomerIDNumber        CHAR(50)
+
+KEY PKEY PRIMARY SystemId
+PROC SELECTONE
+PROC INSERT

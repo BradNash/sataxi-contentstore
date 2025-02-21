@@ -1,0 +1,9 @@
+kind: CorrespondenceImport 
+spec:
+  templates:
+    - identifier: 3RD_PARTY_CLAIM_REGISTRATION_EMAIL
+      correspondenceType: EMAIL
+      subjectHeadingFile: ./v1/subject.txt
+      templateFile: ./v1/template.html
+      version: 1
+

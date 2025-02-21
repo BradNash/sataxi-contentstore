@@ -1,0 +1,7 @@
+kind: CorrespondenceImport
+spec:
+  templateSnippets:
+    - identifier: GOMO_EMAIL_HEADER
+      correspondenceType: EMAIL
+      templateFile: ./v1/template-snippet.html
+      version: 1

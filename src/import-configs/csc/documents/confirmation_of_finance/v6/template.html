@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Confirmation of Finance</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        html {
+            margin: 1.25rem;
+            font-family: "Calibri (Body)", serif;
+        }
+
+        h4,
+        h2 {
+            color: #1768b0;
+        }
+
+        div {
+            width: 100%;
+            margin: 0.625rem;
+        }
+
+        .logo {
+            height: 9rem;
+			width: inherit;
+        }
+
+        .grid {
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border-spacing: 1rem;
+        }
+
+        .no-margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid-row {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            margin: 0 0 -1.75rem 0;
+        }
+
+        .item-color {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .document-title {
+            text-align: end;
+            margin: 0;
+            width: 100%;
+        }
+
+        .document-title h2 {
+            float: right;
+            max-width: 50%;
+            margin: 0;
+            font-size: larger;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid black;
+            /*border-collapse: collapse;*/
+            page-break-inside: avoid;
+        }
+
+        tr {
+            height: 2.5rem;
+
+        }
+
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        tr {
+            height: 40px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        tbody tr td:first-child {
+            width: 40%;
+            border-bottom-style: hidden;
+            padding-left: 15px;
+            background-color: #c1d5e9;
+        }
+
+        tbody tr td:last-child {
+            border-bottom-style: dotted;
+            border-bottom-width: 2px;
+            padding-left: 10px;
+        }
+
+        tbody tr:last-child td {
+            border-bottom-style: initial;
+        }
+
+        .two-column tbody tr td:first-child {
+            width: 40%;
+            border-bottom-style: hidden;
+            padding-left: 1rem;
+            background-color: #c1d5e9;
+        }
+
+        .two-column tbody tr td:last-child {
+            border-bottom-style: dotted;
+            border-bottom-width: 0.062rem;
+            padding-left: 0.625rem;
+        }
+
+        .two-column tbody tr:last-child td:last-child {
+            border-bottom-style: dotted;
+        }
+
+        .child-borders {
+            border-collapse: separate;
+            border-style: initial;
+        }
+
+        .multi-option-boxes tr td {
+            text-align: center;
+            padding: 0.313rem;
+            background-color: #c1d5e9;
+        }
+
+        .multi-option-boxes input[type='checkbox'] {
+            width: 1.75rem;
+            height: 1.75rem;
+            vertical-align: middle
+        }
+
+        .id-number-field {
+            border-collapse: separate;
+            border-style: initial;
+            text-align: center;
+        }
+
+        .id-number-field tbody tr td:first-child {
+            width: 25%;
+            border-style: none;
+            text-align: left;
+            padding: 0 0.313rem 0 0;
+        }
+
+        .id-number-field td {
+            padding: 0.313rem;
+            border-style: solid;
+        }
+
+        .witness-section tbody {
+            border-style: hidden;
+        }
+
+        .witness-section tr {
+            height: 1.875rem;
+        }
+
+        .small-top-margin {
+            margin-top: 1rem;
+        }
+
+        .medium-top-margin {
+            margin-top: 2rem;
+        }
+
+        .large-top-margin {
+            margin-top: 3rem;
+        }
+
+        .grid-row.stamp {
+            margin-top: 2rem;
+            position: relative;
+            width: 13rem;
+            page-break-inside: avoid;
+        }
+
+        .stamp {
+            position: relative;
+            width: 13rem;
+            page-break-inside: avoid;
+            padding-top: 2rem
+        }
+
+        .stamp img {
+            height: 12rem;
+            width: 13rem;
+        }
+
+        p.date {
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+            position: absolute;
+            top: 35%;
+            margin-left: 23%;
+            color: #565555;
+        }
+
+        .signature {
+            border-bottom: #333232 dotted 0.125rem;
+        }
+
+        .header {
+            margin: 0;
+            width: 100%;
+        }
+
+        .footer {
+            border: 0.063rem solid;
+            margin-block: 1.3rem;
+            page-break-inside: avoid;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: X-small;
+        }
+
+        .keep-together {
+            page-break-inside: avoid;
+        }
+
+        .watermark-text {
+            display: block;
+            position: absolute;
+            width: 100%;
+            color: #565555;
+            left: 7%;
+            bottom: 35%;
+            padding: 1em;
+            font-weight: 700;
+            z-index: 2;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .watermark-text.top {
+            bottom: 70%;
+        }
+
+        .watermark-text.bottom {
+            bottom: 0;
+        }
+
+        .currency::before {
+            font-weight: bold;
+            content: "R ";
+        }
+
+        .container {
+            display: flex;
+            page-break-inside: avoid;
+        }
+
+        .item {
+            flex-grow: 1; /* default 0 */
+        }
+
+        #image {
+            /* the image you want to 'watermark' */
+            height: 12.5rem; /* or whatever, equal to the image you want 'watermarked' */
+            width: 12.5rem; /* as above */
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .stamp p .date {
+            /* the actual 'watermark' */
+            position: absolute;
+            top: 50%; /* or whatever */
+            left: 30%; /* or whatever, position according to taste */
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+        }
+
+        .credit-providers {
+            text-align: right;
+        }
+
+          .page-footer {
+            width: 100%;
+            font-size: x-small;
+            opacity: 0.25;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media screen and (max-width: 30rem) {
+            .grid-row {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+        @media print {
+            .keep-together {
+                page-break-inside: avoid;
+            }
+
+            @page {
+                size: A4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="grid no-margin-padding">
+    <div class="grid-row header">
+        <div class="no-margin-padding">
+            <img class="logo" src="{{SATAXI_LOGO}}"/>
+        </div>
+        <br/>
+        <div class="document-title">
+            <h2>Confirmation of Finance</h2>
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <h5>{{ CURRENT_DATE }}</h5>
+    </div>
+
+    <div class="grid-row">
+        <h4 style="color: black">To whom it may concern</h4>
+        <h4>Account Holder Details</h4>
+        <table class="two-column" aria-hidden="true">
+            <tr>
+                <td>Client's Full Name</td>
+                <td>{{ CLIENT_FULL_NAME }}</td>
+            </tr>
+            <tr>
+                <td>Client's ID Number</td>
+                <td>{{ CLIENT_ID_NO }}</td>
+            </tr>
+            <tr>
+                <td>Client's Deal Account Number</td>
+                <td>{{ ACCOUNT_NUMBER }}</td>
+            </tr>
+            <tr>
+                <td>Instalment Amount</td>
+                <td>{{ "R{:,.2f}".format(INSTALMENT_AMOUNT | float) }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="grid-row">
+        {% if PREVIOUS_FINANCE_STRUCTURE %}
+        <p>
+            This letter serves to confirm that the abovementioned client holds
+            only one account with <b>SA TAXI FINANCE</b> since {{ FINANCE_DATE }}
+            under
+            <span style="color: red"><b>{{ PREVIOUS_FINANCE_STRUCTURE }}</b></span> and we
+            have since updated the finance structure to
+            <b>{{ CURRENT_FINANCE_STRUCTURE }}</b>.
+        </p>
+        {% else %}
+        <p>
+            This letter serves to confirm that the abovementioned client holds
+            only one account with <b>SA TAXI FINANCE</b> since {{ FINANCE_DATE }}
+            under <b>{{ CURRENT_FINANCE_STRUCTURE }}</b>.
+        </p>
+        {% endif %}
+    </div>
+
+    <div class="container">
+
+        <div class="item">
+            <p>Yours Sincerely</p>
+            <img class="signature" src="{{SIGNATURE}}" alt="signature"/>
+            <h5>K. Maleba</h5>
+            <p>Head of Customer Service</p>
+             <p><i>For and on behalf of Credit Provider – being duly authorised hereto</i></p>
+            <p>Contact: 011 550 9460</p>
+        </div>
+        <div class="item stamp" id="image">
+            <img src="{{STAMP}}" alt=""/>
+            <p class="date">{{ STAMP_DATE }}</p>
+        </div>
+
+    </div>
+    <div class="grid-row credit-providers footer" style="border: hidden">
+        <p>
+        <hr style="color: lightblue">
+        <p>
+            <span style="float: left ">Confirmation of Finance_{{DOCUMENT_REV_DATE|default("31.05.18", true)}}_{{DOC_VERSION|default("2", true)}}</span>
+        </p>
+        <p>{{ DOCUMENT_FOOTER }}</p>
+        <p><i>a Transaction Capital company</i></p>
+        <br/>
+        <p>179 15th Road, Randjespark, Midrand • Box 41888, Craighall, 2024</p>
+        <p>Tel: 0861 829 448 • Fax: 011 447 2885 • Website: www.sataxi.co.za</p>
+        </p>
+    </div>
+    <div class="page-footer" style="margin-top: 1.5rem">
+        <p><span style="float: right ">Page {{PAGE_NUMBER|default("1", true)}} of {{PAGES|default("1", true)}}</span>
+        </p>
+    </div>
+</div>
+</body>
+</html>

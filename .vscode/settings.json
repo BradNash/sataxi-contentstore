@@ -1,0 +1,20 @@
+{
+  "python.languageServer": "Pylance",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "120"],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8CategorySeverity.W": "Error",
+  "python.linting.pylintCategorySeverity.warning": "Error",
+  "python.linting.flake8Path": "${workspaceFolder}/src/python",
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintPath": "${workspaceFolder}/src/python",
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true
+}

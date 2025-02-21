@@ -1,0 +1,17 @@
+kind: CorrespondenceImport 
+spec:
+  attachments:
+    - userSpecifiedKey: SATAXI_FOOTER_V1
+      file: ./v1/footer.png
+    - userSpecifiedKey: SATAXI_FOOTER_V2
+      file: ./v2/footer.png
+  templateSnippets:
+    - identifier: SATAXI_EMAIL_FOOTER
+      correspondenceType: EMAIL
+      templateFile: ./v1/template-snippet.html
+      version: 1
+    - identifier: SATAXI_EMAIL_FOOTER
+      correspondenceType: EMAIL
+      templateFile: ./v2/template-snippet.html
+      version: 2
+

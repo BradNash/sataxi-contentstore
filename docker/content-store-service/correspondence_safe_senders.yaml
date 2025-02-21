@@ -1,0 +1,47 @@
+service_super:
+  Email: a@a.com
+  SMS: "123456789"
+# Poonam Kutale
+pkutale@sataxi.co.za:
+  Email: poonamk@bbd.co.za
+  SMS: "+918446002291"
+# Dieter Rosch
+drosch@sataxi.co.za:
+  Email: dieter@bbd.co.za
+  SMS: "+27834611988"
+#Bradley
+bpirie@sataxi.co.za:
+  Email: bradleyp@bbd.co.za
+  SMS: "+27744934479"
+#Jacques Kammeyer
+jkammeyer@mobalyz.com:
+  Email: jkammeyer@mobalyz.com
+  SMS: "+27724626071"
+#Salim
+salimh@gomo.co.za:
+  Email: salimh@gomo.co.za
+  SMS: "+27846553281"
+#Melanie Kruger
+mekruger@sataxi.co.za:
+  Email: mekruger@sataxi.co.za
+  SMS: "+27842447424"
+#Charne Van Rensburg
+cvanrensburg@gomo.co.za:
+  Email: cvanrensburg@gomo.co.za
+  SMS: "+27716858644"
+#Melody Sallie
+msallie@sataxi.co.za:
+  Email: msallie@sataxi.co.za
+  SMS: "+27836442862"
+#Marche Van Deventer
+mvandeventer@sataxi.co.za:
+  Email: mvandeventer@sataxi.co.za
+  SMS: "+27836442862"
+#Nicolette Anderson
+nanderson@gomo.co.za:
+  Email: nanderson@gomo.co.za
+  SMS: "+27828078474"
+#Dawn Mamabolo 
+dmamabolo@mobalyz.com:
+  Email: dmamabolo@mobalyz.com
+  SMS: "+27670826068"

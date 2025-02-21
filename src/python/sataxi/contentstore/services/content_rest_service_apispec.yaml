@@ -1,0 +1,1093 @@
+components:
+  schemas:
+    CSVData:
+      properties:
+        column_names:
+          description: CSV column names
+          items:
+            type: string
+          type: array
+        data:
+          description: CSV Data
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        index:
+          description: CSV index
+          type: integer
+      required:
+      - column_names
+      - data
+      - index
+      type: object
+    CSVRequest:
+      properties:
+        csv_data:
+          description: CSV Data
+          example:
+          - column_names:
+            - Column1
+            - Column2
+            - Column3
+            data:
+            - - AAA
+              - AAA
+              - AAA
+            - - BBB
+              - BBB
+              - BBB
+            - - CCC
+              - CCC
+              - CCC
+            index: 0
+          - column_names:
+            - Data1
+            - Data2
+            - Data3
+            - Data4
+            - Data5
+            data:
+            - - 0
+              - 0
+              - '000'
+              - '000'
+              - 0
+            - - 111
+              - 111
+              - '111'
+              - '111'
+              - 111
+            - - 222
+              - 222
+              - '222'
+              - '222'
+              - 222
+            - - 333
+              - 333
+              - '333'
+              - '333'
+              - 333
+            index: 1
+          items:
+            $ref: '#/components/schemas/CSVData'
+          type: array
+        delimiter:
+          description: CSV Delimiter
+          example: ;
+          type: string
+        fileName:
+          description: CSV Delimiter
+          type: string
+      required:
+      - csv_data
+      - delimiter
+      - fileName
+      type: object
+    CSVResponse:
+      properties:
+        guid:
+          default: null
+          description: key to find document
+          nullable: true
+          type: string
+        payload:
+          default: null
+          nullable: true
+          type: string
+      type: object
+    ContentItem:
+      properties:
+        content_data:
+          type: string
+        content_link_id:
+          type: integer
+        content_type:
+          type: integer
+        created_date:
+          format: date-time
+          type: string
+        source_id:
+          type: string
+        source_type:
+          type: integer
+        tmstamp:
+          format: date-time
+          type: string
+        usr_id:
+          type: string
+      required:
+      - content_data
+      - content_link_id
+      - content_type
+      - created_date
+      - source_id
+      - source_type
+      - tmstamp
+      - usr_id
+      type: object
+    DocumentTemplate:
+      properties:
+        accountNumber:
+          description: Account Number of client
+          type: string
+        caseNumber:
+          description: Case Number to attach document
+          type: integer
+        encryptionPassword:
+          description: Password to encrypt password
+          type: string
+        templateIdentifier:
+          description: The ID of the template to populate
+          type: string
+        templateParameters:
+          additionalProperties:
+            nullable: true
+          description: The parameters required by the template
+          example:
+            ACCOUNTS:
+            - '001'
+            - '002'
+            DETAILS:
+            - KEY_1: VALUE_1
+              KEY_2: VALUE_2
+            NAME: Clark Kent
+          type: object
+        templateVersion:
+          default: null
+          description: The version of the template to use. If not provider, the latest
+            version  of the specified template will get used.
+          nullable: true
+          type: integer
+      required:
+      - accountNumber
+      - caseNumber
+      - encryptionPassword
+      - templateIdentifier
+      - templateParameters
+      type: object
+    DocumentTemplateResponse:
+      properties:
+        caseNumber:
+          default: null
+          description: Case Number to attach document
+          nullable: true
+          type: integer
+        guid:
+          default: null
+          description: key to find document
+          nullable: true
+          type: string
+        payload:
+          default: null
+          nullable: true
+          type: string
+      type: object
+    EmailPreviewRequest:
+      properties:
+        template_identifier:
+          description: The ID of the template to populate
+          type: string
+        template_parameters:
+          additionalProperties:
+            nullable: true
+          description: The parameters required by the template
+          example:
+            ACCOUNTS:
+            - '001'
+            - '002'
+            NAME: Clark Kent
+          type: object
+        template_version:
+          default: null
+          description: The version of the template to use. If not provider, the latest
+            version of the specified template will get used.
+          nullable: true
+          type: integer
+      required:
+      - template_identifier
+      - template_parameters
+      type: object
+    EmailPreviewResponse:
+      properties:
+        body:
+          description: The email body
+          example:
+            NAME: Clark Kent
+          type: string
+        subject:
+          description: The email subject
+          type: string
+      required:
+      - body
+      - subject
+      type: object
+    FailedResponse:
+      properties: {}
+      type: object
+    HiveDocDataRequest:
+      properties:
+        accountNumber:
+          description: Account Number
+          example: 000000:000000
+          type: string
+        chassisNumber:
+          default: null
+          description: Chassis Number
+          example: AHTSX22P007003131
+          nullable: true
+          type: string
+        customerIDNumber:
+          description: Customer IDNumber
+          example: '4501315068083'
+          type: string
+        docData:
+          default: null
+          description: Customer IDNumber
+          nullable: true
+          type: string
+        docDescription:
+          description: Document Description
+          example: Document Description
+          type: string
+        engineNumber:
+          default: null
+          description: Engine Number
+          example: 2TR8458234
+          nullable: true
+          type: string
+        fileName:
+          default: null
+          description: File Name
+          example: file.pdf
+          nullable: true
+          type: string
+        process:
+          description: Document Type (Settlement, Statement etc)
+          example: Settlement
+          type: string
+        registrationNumber:
+          default: null
+          description: Registration Number
+          example: YKX482GP
+          nullable: true
+          type: string
+        storeSharedLocation:
+          description: Whether to store file in shared location
+          example: true
+          type: boolean
+        uploadedBy:
+          description: Uploaded By
+          type: string
+        userSpecifiedKey:
+          description: Key to find document Data
+          example: USERSPECIFIEDKEY=00644040-9591-4632-b7e5-6507e828681a or 123
+          type: string
+        view_name:
+          default: Vanguard
+          description: View Name
+          readOnly: true
+          type: string
+      required:
+      - accountNumber
+      - customerIDNumber
+      - docDescription
+      - process
+      - storeSharedLocation
+      - uploadedBy
+      - userSpecifiedKey
+      type: object
+    InsertContent:
+      properties:
+        content_type:
+          type: integer
+        payload:
+          type: string
+        source_id:
+          type: string
+        source_type:
+          example: 1
+          type: integer
+      required:
+      - content_type
+      - payload
+      - source_id
+      - source_type
+      type: object
+    InsertContentV2:
+      properties:
+        content_type:
+          description: content_type
+          enum:
+          - BASE64_STRING
+          - BINARY
+          - STRING
+          example: BINARY
+          type: string
+        encryption_password:
+          default: null
+          description: Password to encrypt PDF.
+          nullable: true
+          type: string
+        payload:
+          format: binary
+          type: string
+        source_id:
+          description: The source channel ID, eg. Vanguard UI
+          example: VANGUARD_UI
+          type: string
+        source_type:
+          description: The Source Type (VANGUARD_CONTENTSTORE=1)
+          example: 1
+          type: integer
+        user_specified_key:
+          default: null
+          description: A unique GUID or key specified by the uploader for the document
+          example: 0a4cef77-38ad-4a68-bba1-b16f96d92575
+          nullable: true
+          type: string
+      required:
+      - content_type
+      - payload
+      - source_id
+      - source_type
+      type: object
+    InsertResponseContent:
+      properties:
+        content_link_id:
+          type: integer
+      required:
+      - content_link_id
+      type: object
+    InsertResponseContentV2:
+      properties:
+        content_link_id:
+          type: integer
+      required:
+      - content_link_id
+      type: object
+    MobalyzDocumentTemplate:
+      properties:
+        caseNumber:
+          description: Case Number to attach document
+          type: integer
+        details:
+          additionalProperties:
+            nullable: true
+          description: The parameters required by the template
+          example:
+            __IdNum: '9306120815031'
+            __name: Clark Kent
+          type: object
+        password:
+          description: The password to use to protect
+          example: '1234567'
+          type: string
+        passwordProtect:
+          description: Should the document be password protected
+          example: true
+          type: boolean
+        pdfTemplateName:
+          description: template that should be used
+          type: string
+      required:
+      - caseNumber
+      - details
+      - password
+      - passwordProtect
+      - pdfTemplateName
+      type: object
+    MobalyzDocumentTemplateResponse:
+      properties:
+        caseNumber:
+          default: null
+          description: Case Number to attach document
+          nullable: true
+          type: integer
+        guid:
+          default: null
+          description: key to find document
+          nullable: true
+          type: string
+        payload:
+          default: null
+          nullable: true
+          type: string
+      type: object
+    SendEmailRequest:
+      properties:
+        attachments:
+          description: A list of attachments to include in the outgoing correspondence,
+            using the contentstore URI format for example `['cs://123/', 'cs://userSpecifiedKey=abc']`
+          items:
+            type: string
+          type: array
+        bcc_addresses:
+          description: A list of addresses to BCC the email to
+          items:
+            type: string
+          type: array
+        cc_addresses:
+          description: A list of addresses to CC the email to
+          items:
+            type: string
+          type: array
+        destination_addresses:
+          description: The list of destination email addresses to send the email to
+          items:
+            type: string
+          type: array
+        sender_address:
+          default: null
+          description: The sender email address to use, if not specified, the default
+            sender email address specified in the config will be used
+          nullable: true
+          type: string
+        template_identifier:
+          description: The ID of the template to populate
+          type: string
+        template_parameters:
+          additionalProperties:
+            nullable: true
+          description: The parameters required by the template
+          example:
+            ACCOUNTS:
+            - '001'
+            - '002'
+            NAME: Clark Kent
+          type: object
+        template_version:
+          default: null
+          description: The version of the template to use. If not provider, the latest
+            version of the specified template will get used.
+          nullable: true
+          type: integer
+      required:
+      - destination_addresses
+      - template_identifier
+      - template_parameters
+      type: object
+    SendSmsRequest:
+      properties:
+        destination_phone_number:
+          description: The phone number to send the SMS to
+          items:
+            type: string
+          type: array
+        sender:
+          default: null
+          description: The sender of the sms
+          nullable: true
+          type: string
+        template_identifier:
+          description: The ID of the template to populate
+          type: string
+        template_parameters:
+          additionalProperties:
+            type: string
+          description: The parameters required by the template
+          example:
+            NAME: Clark Kent
+          type: object
+        template_version:
+          default: null
+          description: The version of the template to use. If not provider,the latest
+            version of the specified template will get used.
+          nullable: true
+          type: integer
+      required:
+      - destination_phone_number
+      - template_identifier
+      - template_parameters
+      type: object
+    SmsPreviewRequest:
+      properties:
+        template_identifier:
+          description: The ID of the template to populate
+          type: string
+        template_parameters:
+          additionalProperties:
+            nullable: true
+          description: The parameters required by the template
+          example:
+            ACCOUNTS:
+            - '001'
+            - '002'
+            NAME: Clark Kent
+          type: object
+        template_version:
+          default: null
+          description: The version of the template to use. If not provider, the latest
+            version of the specified template will get used.
+          nullable: true
+          type: integer
+      required:
+      - template_identifier
+      - template_parameters
+      type: object
+    SmsPreviewResponse:
+      properties:
+        body:
+          description: The email body
+          example:
+            NAME: Clark Kent
+          type: string
+      required:
+      - body
+      type: object
+  securitySchemes:
+    OAuth2:
+      description: Identity Server OAuth2 implicit authentication
+      flows:
+        implicit:
+          authorizationUrl: http://localhost:5001/connect/authorize
+          scopes:
+            bbd.vanguard.services.security: Bbd.Vanguard.Services.Security description
+            vgd.cs: Vgd.Cs description
+      type: oauth2
+info:
+  title: Sa Taxi Content Store Service
+  version: '1.0'
+openapi: 3.0.0
+paths:
+  /api/: {}
+  /api/def/:
+    get:
+      description: Get OpenAPi specification for this endpoint
+      tags:
+      - ServerUtils
+  /api/docs/: {}
+  /api/docs/rapiddoc/:
+    get:
+      description: Get RapidDoc UI page
+      tags:
+      - ServerUtils
+  /api/docs/rapidoc/:
+    get:
+      description: Get RapidDoc UI page
+      tags:
+      - ServerUtils
+  /api/docs/redoc/:
+    get:
+      description: Get ReDoc UI page
+      tags:
+      - ServerUtils
+  /api/docs/swagger/:
+    get:
+      description: Get Swagger UI page
+      tags:
+      - ServerUtils
+  /api/docs/swagger/redirect/:
+    get:
+      description: Get Swagger UI redirect page
+      tags:
+      - ServerUtils
+  /content/:
+    post:
+      description: Upload content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsertContent'
+        description: Content to be uploaded
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsertResponseContent'
+          description: Content Link Records
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Invalid request data
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Deprecated
+  /content/v2/:
+    post:
+      description: Upload content
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/InsertContentV2'
+              type: object
+        description: Content to be uploaded
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsertResponseContentV2'
+          description: Content Link Records
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Invalid request data
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Content
+  /content/v2/find_by_cs_uri/{contentstore_uri}/:
+    get:
+      description: Get content by a contentstore uri
+      parameters:
+      - allowEmptyValue: false
+        description: 'example: cs://123/ OR cs://userSpecifiedKey=abc'
+        in: path
+        name: contentstore_uri
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: Content Link Records
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Invalid request data
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Content not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Content
+  /content/v2/{content_link_id}/:
+    get:
+      description: Get content
+      parameters:
+      - allowEmptyValue: false
+        description: The content's content link id
+        in: path
+        name: content_link_id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: Content Link Records
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Invalid request data
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Content not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Content
+  /content/{content_link_id}/:
+    get:
+      description: Get content
+      parameters:
+      - allowEmptyValue: false
+        description: The content's content link id
+        in: path
+        name: content_link_id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItem'
+          description: Content Link Records
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Invalid request data
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Content not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Deprecated
+  /correspondence/v1/email/preview:
+    put:
+      description: This endpoint fetches the email template and populates it with
+        the email request field values
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailPreviewRequest'
+        description: Email Preview request
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewResponse'
+          description: successful description
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Request failure.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Requested data does not exist.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure.
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Correspondence
+  /correspondence/v1/email/send:
+    post:
+      description: Send an email using a template to the specified destination
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailRequest'
+        description: Email Send request
+      responses:
+        '200':
+          description: Email successfully sent
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Request failure.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Requested data does not exist.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure.
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Correspondence
+  /correspondence/v1/sms/preview:
+    put:
+      description: This endpoint fetches the sms template and populates it with the
+        sms request field values
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmsPreviewRequest'
+        description: SMS Preview request
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmsPreviewResponse'
+          description: successful description
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Request failure.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Requested data does not exist.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure.
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Correspondence
+  /correspondence/v1/sms/send:
+    post:
+      description: Send an SMS using a template to the specified destination
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSmsRequest'
+        description: SMS Send request
+      responses:
+        '200':
+          description: SMS successfully sent
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Request failure.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Requested data does not exist.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure.
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Correspondence
+  /documents/v1/generate:
+    post:
+      description: Generate Document via template identifier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentTemplate'
+        description: Document Template request
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentTemplateResponse'
+          description: Document Templates
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Request failure.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Generic Failure
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Document Templates
+  /documents/v1/generate_csv:
+    post:
+      description: Generate CSV
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CSVRequest'
+        description: CSV request
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CSVResponse'
+          description: CSV Response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Request failure.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Generic Failure
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Document Templates
+  /documents/v1/mobalyz/generate:
+    post:
+      description: Generate Document Mobalyz Document API
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MobalyzDocumentTemplate'
+        description: Document Template requests
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MobalyzDocumentTemplateResponse'
+          description: Document Templates
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Request failure.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Generic Failure
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Document Templates
+  /documents/v1/save_document_to_hive:
+    post:
+      description: Save Documents to Shared Location and Hive
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HiveDocDataRequest'
+        description: Hive Doc Data Request
+      responses:
+        '200':
+          description: Hive Doc Response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Request failure.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: Generic Failure
+      security:
+      - OAuth2:
+        - bbd.vanguard.services.security
+        - vgd.cs
+      tags:
+      - Document Templates
+  /health_check/:
+    get:
+      description: Checks if service is healthy.
+      tags:
+      - HealthCheck
+    head:
+      description: Checks if service is healthy.
+      tags:
+      - HealthCheck
+  /metrics/:
+    get:
+      responses:
+        '200':
+          description: Successful re-assignment
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: GenericFailure
+      tags:
+      - ServerUtils
+servers:
+- description: API Server
+  url: '%s'

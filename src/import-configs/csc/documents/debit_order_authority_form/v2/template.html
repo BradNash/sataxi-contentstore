@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        html {
+            margin: 20px;
+            font-family: "Calibri (Body)";
+        }
+
+        h4,
+        h2 {
+            color: #1768b0;
+        }
+
+        div {
+            width: 95%;
+            margin: 10px;
+        }
+
+        .logo {
+            max-width: 300px;
+        }
+
+        .grid {
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border-spacing: 15px;
+        }
+
+        .grid-row {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            margin: 0 0 -28px 0;
+        }
+
+        .item {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .item-color {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .document-title {
+            text-align: end;
+            margin: 0;
+            width: 100%;
+        }
+
+        .document-title h2 {
+            float: right;
+            max-width: 50%;
+            margin: 0;
+            font-size: larger;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table.no-top-margin td,
+        table.no-top-margin {
+            border-top: none;
+        }
+
+        td {
+            padding: 0.5rem;
+        }
+
+        tbody tr td:nth-child(odd) {
+            background-color: #c1d5e9;
+        }
+
+        .signature-box tbody tr td:nth-child(odd) {
+            width: 20%;
+        }
+
+        .blue-fill {
+            background-color: #c1d5e9;
+        }
+
+        li {
+            page-break-inside: avoid;
+            font-size: small;
+        }
+
+        .grid-row.stamp {
+            margin-top: 2rem;
+            position: relative;
+            width: 13rem;
+        }
+
+        .stamp img {
+            height: 12rem;
+            width: 13rem;
+        }
+
+        p.date {
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+            position: absolute;
+            top: 33%;
+            margin-left: 20%;
+            color: #565555;
+        }
+
+        .footer {
+            border: 0.063rem solid;
+            margin-block: 1.3rem;
+            margin: 3rem 0rem;
+            page-break-inside: avoid;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: small;
+        }
+
+        .page-footer {
+            width: 100%;
+            font-size: x-small;
+            opacity: 0.25;
+            margin: 0;
+            padding: 0;
+        }
+
+        .keep-together {
+            page-break-inside: avoid;
+        }
+
+        .two-column tbody tr td:first-child {
+            width: 40%;
+            border-bottom-style: hidden;
+            padding-left: 1rem;
+            background-color: #c1d5e9;
+        }
+
+        .two-column tbody tr td:last-child {
+            border-bottom-style: dotted;
+            border-bottom-width: 0.125rem;
+            padding-left: 0.625rem;
+        }
+
+        .two-column tbody tr:last-child td {
+            border-bottom-style: initial;
+        }
+
+        .credit-providers {
+            text-align: right;
+        }
+
+        @media screen and (max-width: 480px) {
+            .grid-row {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+
+            .item {
+                display: block;
+                width: 100%;
+                margin: 0 0 5px 0;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="grid">
+    <div class="grid-row">
+        <div class="item-color">
+            <img class="logo" src="{{SATAXI_LOGO}}" alt="sataxi_logo"/>
+        </div>
+    </div>
+
+    <div class="grid-row document-title">
+        <h2>Debit Order Authorisation Instruction</h2>
+    </div>
+
+    <div class="grid-row">
+        <h4 style="color: black">To whom it may concern</h4>
+        <table aria-hidden="true">
+            <tr>
+                <td>Date</td>
+                <td colspan="3">{{ CURRENT_DATE }}</td>
+            </tr>
+            <tr>
+                <td>Credit Agreement Number</td>
+                <td>{{ CREDIT_AGREEMENT_NUMBER }}</td>
+                <td>Credit Provider:</td>
+                <td>{{ CREDIT_PROVIDER }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="grid-row">
+        <h3>About you (the consumer)</h3>
+        <table aria-hidden="true">
+            <tr>
+                <td>Your full name</td>
+                <td>{{ CLIENT_FULL_NAME }}</td>
+            </tr>
+            <tr>
+                <td>Your ID Number</td>
+                <td>{{ CLIENT_ID_NO }}</td>
+            </tr>
+            <tr>
+                <td>Your physical(home) address</td>
+                <td>{{ CLIENT_ADDRESS }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="grid-row">
+        <h3>About your bank account details</h3>
+        <table aria-hidden="true">
+            <tr>
+                <td>Bank</td>
+                <td>{{ BANK_NAME }}</td>
+                <td>Branch Name and Town</td>
+                <td>{{ BRANCH_NAME }}</td>
+                <td>Branch Code</td>
+                <td>{{ BRANCH_CODE }}</td>
+            </tr>
+            <tr>
+                <td>Account Number</td>
+                <td colspan="5">{{ BANK_ACCOUNT_NUMBER }}</td>
+            </tr>
+        </table>
+        <table class="no-top-margin">
+            <tr>
+                <td>Type of Account</td>
+                <td style="max-width: 0.5rem">{{ CHEQUE_ACCOUNT }}</td>
+                <td>Cheque</td>
+                <td style="max-width: 0.5rem">{{ SAVINGS_ACCOUNT }}</td>
+                <td>Savings</td>
+                <td style="max-width: 0.5rem">{{ OTHER_ACCOUNT }}</td>
+                <td>Other (specify)</td>
+                <td style="width: max-content;">{{ OTHER_ACCOUNT_DESCRIPTION }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="grid-row">
+        <h3>About your preferred payment method</h3>
+        (kindly tick the box below to confirm your consent of payment by debit order)
+        <br/>
+        <br/>
+        <table aria-hidden="true">
+            <tr>
+                <td>Monthly Debit Order</td>
+                <td>
+                    <input type="checkbox" checked> Total instalment value of {{TOTAL_INSTALMENT_AMOUNT}} to be
+                    collected
+                    monthly on the due date
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <div class="grid-row">
+        <p>
+            I, the borrower, hereby instruct and authorise the Credit Provider
+            named above:
+        </p>
+        <ul>
+            <li>
+                To issue and deliver a payment instruction, or a series of payment
+                instructions, to my bank for the purposes of collecting the payments
+                that I am obliged to make to the Credit Provider in terms of the
+                Credit Agreement (I.e., the specific Credit Agreement that is
+                referred to in terms of the Credit Agreement Number quoted at the
+                head of this authorisation.
+            </li>
+            <li>
+                To issue and deliver the payment instruction or each payment
+                instruction in a series of payment instructions to my bank on or
+                after the Instalment Due Date as set out in my Credit Agreement.
+            </li>
+            <li>
+                To, in the event of there being insufficient funds available in my
+                banking account to fully satisfy my obligations to the Credit
+                Provider require my bank to collect a portion of the payment that is
+                due, owing and payable by me to the Credit Provider and, at its
+                discretion, continue to re-present the payment instruction or
+                payment instructions to my bank until such time that my outstanding
+                obligation in terms of the payment instruction is fully satisfied;
+                and
+            </li>
+            <li>
+                To issue and deliver payment instructions to my bank in addition to
+                the scheduled number of payments in respect of any amount that may
+                be in arrears, including but not limited to any arrears interest,
+                penalty costs and charges, that may have accrued as a result of me
+                not having made regular or punctual payments of my obligations, as
+                are contained in the Credit Agreement concluded with the Credit
+                Provider.
+            </li>
+        </ul>
+        <p>I understand that: -</p>
+        <ul>
+            <li>
+                In terms of the Credit Agreement that I have entered with the Credit
+                Provider, I am obliged to make payments on the Instalment Due Date
+                and the Credit Provider has the right to collect the payments on the
+                Instalment Due Date but as an indulgence in my favour. The Credit
+                Provider will endeavour to deliver the payment instruction or each
+                payment instruction in a series of payment instructions to my bank
+                on the day on which I deposit the receipts from my operations into
+                the bank account, provided that such date shall be a date on or
+                after the Instalment Due Date and that I will ensure that sufficient
+                funds are available at the time in the account;
+            </li>
+            <li>
+                The payment instruction/s I have authorised to be issued will be
+                processed by using any payment service system provided by my bank,
+                now or in the future, and where applicable will carry a number,
+                which number is included in this Authority, and which enables me to
+                identify the specific Credit Agreement that I concluded with the
+                Credit Provider. Where applicable, the said number is included in
+                this form and as such has been communicated to me. I understand that
+                details of each deduction will be printed on my bank statement or on
+                any accompanying voucher.
+            </li>
+            <li>
+                The Credit Provider and my bank will treat the payment instruction/s
+                issued by the Credit Provider as if I had issued the instruction/s
+                to my bank.
+            </li>
+            <li>
+                I will pay any bank charges levied by my bank relating to these
+                deductions.
+            </li>
+            <li>
+                I may cancel this Authority by giving the Credit Provider thirty
+                (30) days’ notice, in writing, sent by prepaid registered post to
+                the Credit Provider.
+            </li>
+            <li>
+                By cancelling this Authority, such cancellation will not cancel the
+                Credit Agreement and I will remain responsible for ensuring that the
+                instalment is paid to the Credit Provider on each instalment
+                becoming due and payable, as per this schedule.
+            </li>
+            <li>
+                I shall not be entitled to any refund of amounts which the Credit
+                Provider has deducted in terms of this Authority while this
+                Authority was still in force and an outstanding balance, owed by me
+                to the Credit Provider, still existed.
+            </li>
+            <li>
+                I will be responsible for ensuring that the bank account nominated
+                above does not become inaccessible for any reason and undertake to
+                immediately notify the Credit Provider in the event of my operations
+                receipts not being paid into my bank account, as set out in this
+                Authority.
+            </li>
+        </ul>
+        <p>
+            I indemnify my bank and hold it harmless against all costs, charges,
+            expenses, losses and damages which I may suffer as a result of my bank
+            acting in accordance with this Authority. I further indemnify my bank
+            against any claim by a third party arising from the performance or
+            non-performance in terms of this Authority.
+        </p>
+    </div>
+
+    <div class="grid-row">
+        <table class="signature-box" aria-hidden="true">
+            <tr>
+                <td>For and on behalf of
+                    (if company bank account)
+                </td>
+                <td></td>
+                <td>Signing Capacity (if company bank account)</td>
+                <td></td>
+            </tr>
+        </table>
+        <table class="no-top-margin signature-box" aria-hidden="true">
+            <tr>
+                <td>Signatory's Name in full</td>
+                <td></td>
+                <td rowspan="2">Signature (as used on cheques)</td>
+                <td rowspan="2"></td>
+            </tr>
+            <tr>
+                <td>Signatory's ID Number</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="page-footer" style="margin-top: 1.5rem">
+        <hr>
+        <p style="margin-left: 1rem"><span style="float: left ">Debit Order Authorisation_{{DOCUMENT_REV_DATE|default("12.01.15", true)}}_{{DOC_VERSION|default("4", true)}}</span>
+        <p style="margin-right: 1rem"><span style="float: right ">Page {{PAGE_NUMBER|default("2", true)}} of {{PAGES|default("2", true)}}</span>
+        </p>
+    </div>
+</div>
+</body>
+</html>

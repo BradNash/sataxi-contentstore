@@ -1,0 +1,1 @@
+SA Taxi: Dear {{FULLNAME}}, as per your request a debit order has been activated and will take effect from the {{DUE_DATE}} for R {{AMOUNT}}.

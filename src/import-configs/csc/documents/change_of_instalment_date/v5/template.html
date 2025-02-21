@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Request to Change Date of Instalment</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        html {
+            margin: 1.25rem;
+            font-family: "Calibri (Body)", serif;
+        }
+
+        h4,
+        h2 {
+            color: #1768b0;
+        }
+
+        div {
+            width: 95%;
+            margin: 0.625rem;
+        }
+
+        .logo {
+            max-width: 100%;
+        }
+
+        .grid {
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border-spacing: 1rem;
+        }
+
+        .no-margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid-row {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            margin: 0 0 -1.75rem 0;
+        }
+
+        .item-color {
+            display: table-cell;
+            padding: 2%;
+        }
+
+        .document-title {
+            text-align: end;
+            margin: 0;
+            width: 100%;
+        }
+
+        .document-title h2 {
+            float: right;
+            max-width: 50%;
+            margin: 0;
+            font-size: larger;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid black;
+            /*border-collapse: collapse;*/
+            page-break-inside: avoid;
+        }
+
+        tr {
+            height: 2.5rem;
+        }
+
+        .two-column tbody tr td:first-child {
+            width: 40%;
+            border-bottom-style: hidden;
+            padding-left: 1rem;
+            background-color: #c1d5e9;
+        }
+
+        .two-column tbody tr td:last-child {
+            border-bottom-style: dotted;
+            border-bottom-width: 0.125rem;
+            padding-left: 0.625rem;
+        }
+
+        .two-column tbody tr:last-child td {
+            border-bottom-style: initial;
+        }
+
+        .child-borders {
+            border-collapse: separate;
+            border-style: initial;
+        }
+
+        .multi-option-boxes tr td {
+            text-align: center;
+            padding: 0.313rem;
+            background-color: #c1d5e9;
+        }
+
+        .multi-option-boxes input[type='checkbox'] {
+            width: 1.75rem;
+            height: 1.75rem;
+            vertical-align: middle
+        }
+
+        .id-number-field {
+            border-collapse: separate;
+            border-style: initial;
+            text-align: center;
+        }
+
+        .id-number-field tbody tr td:first-child {
+            width: 25%;
+            border-style: none;
+            text-align: left;
+            padding: 0 0.313rem 0 0;
+        }
+
+        .id-number-field td {
+            padding: 0.313rem;
+            border-style: solid;
+        }
+
+        .witness-section tbody {
+            border-style: hidden;
+        }
+
+        .witness-section tr {
+            height: 1.875rem;
+        }
+
+        .small-top-margin {
+            margin-top: 1rem;
+        }
+
+        .medium-top-margin {
+            margin-top: 2rem;
+        }
+
+        .large-top-margin {
+            margin-top: 3rem;
+        }
+
+        .grid-row.stamp {
+            margin-top: 2rem;
+            position: relative;
+            width: 13rem;
+            page-break-inside: avoid;
+        }
+
+        .stamp img {
+            height: 12rem;
+            width: 13rem;
+        }
+
+        p.date {
+            font-weight: 700;
+            font-size: large;
+            font-family: sans-serif;
+            position: absolute;
+            top: 33%;
+            margin-left: 20%;
+            color: #565555;
+        }
+
+        .signature {
+            border-bottom: #333232 dotted 0.125rem;
+        }
+
+        .header {
+            margin: 0;
+            width: 100%;
+        }
+
+        .body {
+        }
+
+        .footer {
+            border: 0.063rem solid;
+            page-break-inside: avoid;
+            position: relative;
+            margin-bottom: -1rem;
+            background-color: #F2F2F2;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: x-small;
+        }
+
+        .page-footer {
+            width: 100%;
+            font-size: x-small;
+            opacity: 0.25;
+            margin: 0;
+            padding: 0;
+        }
+
+        .keep-together {
+            page-break-inside: avoid;
+        }
+
+        .watermark-text {
+            display: block;
+            position: absolute;
+            width: 100%;
+            color: #565555;
+            left: 7%;
+            bottom: 35%;
+            padding: 1em;
+            font-weight: 700;
+            z-index: 2;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .watermark-text.top {
+            bottom: 70%;
+        }
+
+        .watermark-text.bottom {
+            bottom: 0;
+        }
+
+        .credit-providers {
+            text-align: right;
+        }
+
+        .witness-section {
+            border: none;
+        }
+
+        .check-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .check-box div {
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            margin: 0px 0px 0px 12px;
+        }
+
+        .check-box span {
+            margin-right: 4px;
+        }
+
+        @media screen and (max-width: 30rem) {
+            .grid-row {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+        @media print {
+            .keep-together {
+                page-break-inside: avoid;
+            }
+
+            @page {
+                size: A4;
+            }
+
+            /* .header {*/
+            /*    width: 100%;*/
+            /*    position: fixed;*/
+            /*    top: 0;*/
+            /*    !*margin: -5.5cm 0 0;*!*/
+            /*}*/
+            /*.footer {*/
+            /*    border: 0.063rem solid;*/
+            /*    page-break-inside: avoid;*/
+            /*    position: fixed;*/
+            /*    bottom: 0;*/
+            /*    margin-bottom: -1rem;*/
+            /*    width: 100%;*/
+            /*}*/
+        }
+    </style>
+</head>
+
+<body>
+<div class="grid no-margin-padding">
+    <div class="grid-row header">
+        <div class="no-margin-padding">
+            <img class="logo" src="{{SATAXI_LOGO}}"/>
+        </div>
+        <br/>
+        <div class="document-title">
+            <h2>Request to Change Date of Instalment</h2>
+        </div>
+    </div>
+
+    <div class="grid-row body no-margin-padding">
+        <p class="no-margin-padding">
+            By completing this form, you are allowing us to amend the day on
+            which your account instalment falls due.
+
+            <br/>
+            This document gives the SA Taxi Group* permission to make an
+            amendment to an existing Credit Agreement which is held under a Deal
+            Account with ourselves. You agree that, by making this amendment,
+            the SA Taxi Group* are not responsible for any loss, whether direct
+            or indirect, because of amending the instalment date.
+        </p>
+        <h4 class="small-top-margin" style="margin-bottom: 0">About the Deal Account</h4>
+        <table class="two-column" aria-hidden="true">
+            <tr>
+                <td>Deal account number</td>
+                <td>{{ ACCOUNT_NUMBER }}</td>
+            </tr>
+            <tr>
+                <td>Name in which account is held</td>
+                <td>{{ ACCOUNT_HOLDER }}</td>
+            </tr>
+            <tr>
+                <td>Account holder's ID number / Passport number</td>
+                <td>{{ CLIENT_ID_NO }}</td>
+            </tr>
+            <tr style="height: 80px;">
+                <td>Account holder's physical address</td>
+                <td style="border-bottom: 2px dotted">{{ CLIENT_ADDRESS }}</td>
+            </tr>
+        </table>
+
+        <h4 class="small-top-margin">About the Instalment Date</h4>
+        <p>
+            This is the date that you would like your instalment, in the future, to be
+            charged to your Deal Account. You are required to indicate your
+            preference by ticking the applicable box below:
+        </p>
+
+        <table class="child-borders multi-option-boxes" aria-hidden="true">
+            <tr>
+                <td>
+                    <div class="check-box"><span>  1<sup>st</sup></span> of each month
+                        <div>{{ FIRST_DAY }}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="check-box"><span>  6<sup>th</sup></span> of each month
+                        <div>{{ SIXTH_DAY }}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="check-box"><span>  7<sup>th</sup></span> of each month
+                        <div>{{ SEVENTH_DAY }}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="check-box"><span> 15<sup>th</sup></span> of each month
+                        <div>{{ FIFTEENTH_DAY }}</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+        <p>
+            This amendment to instalment date will be applicable as soon as the
+            revised contract is drawn. Please be aware that as soon as the
+            instalment date is changed, the instalment amount due will increase
+            for the duration of the deal term. The revised instalment amount will
+            become due on the set date and monthly thereafter.
+        </p>
+        <p>
+            Signed at ______________________ on this the ______ day of _____________________, 20 ______
+        <p class="medium-top-margin">Client Signature: _________________________</p>
+        </p>
+        <hr class="medium-top-margin">
+
+        <h3>Witnessed by:</h3>
+        <table class="witness-section" aria-hidden="true">
+            <tr>
+                <td>1<sup>st</sup> Witness Signature:</td>
+                <td>_______________________</td>
+                <td>Name of 1<sup>st</sup> Witness:</td>
+                <td>_______________________</td>
+            </tr>
+        </table>
+        <table class="id-number-field small-top-margin" aria-hidden="true">
+            <tr>
+                <td>ID / Passport Number of 1<sup>st</sup> Witness</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <table class="witness-section small-top-margin" aria-hidden="true">
+            <tr>
+                <td>2<sup>nd</sup> Witness Signature:</td>
+                <td>_______________________</td>
+                <td>Name of 2<sup>nd</sup> Witness:</td>
+                <td>______________________</td>
+            </tr>
+        </table>
+        <table class="id-number-field small-top-margin" aria-hidden="true">
+            <tr>
+                <td>ID / Passport Number of 2<sup>nd</sup> Witness</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="grid-row footer medium-top-margin">
+        <p>{{ DOCUMENT_FOOTER }}</p>
+
+    </div>
+    <div class="page-footer" style="margin-top: 1.5rem">
+        <p><span style="float: left ">Request to Change Date of Instalment_{{DOCUMENT_REV_DATE|default("17.04.18", true)}}_{{DOC_VERSION|default("4", true)}}</span>
+        <p><span style="float: right ">Page {{PAGE_NUMBER|default("1", true)}} of {{PAGES|default("1", true)}}</span>
+        </p>
+    </div>
+</div>
+</body>
+</html>

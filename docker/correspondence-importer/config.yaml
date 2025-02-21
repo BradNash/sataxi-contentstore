@@ -1,0 +1,26 @@
+correspondence_importer:
+  Databases:
+    ContentDB:
+      ConnectString: DRIVER={PostgreSQL Unicode};SERVER=$[VANGUARD_DB_SERVER_HOST_NAME:postgresql_database],5432;DATABASE=vanguard-contentstore;UID=$[VANGUARD_DB_USER:postgres_admin];PWD=$[VANGUARD_DB_PASSWORD:magical_password];
+      DBType: postgresql_odbc 
+
+  native_logging:
+    version: 1
+    formatters:
+      default:
+        format: "%(asctime)s %(levelname)-8s %(name)-15s %(message)s"
+        datefmt: "%Y-%m-%d %H:%M:%S"
+    handlers:
+      console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: default
+        stream: ext://sys.stdout
+    loggers:
+      sqlalchemy:
+        level: ERROR
+        propagate: True
+    root:
+      handlers: [console]
+      level: DEBUG
+      propagate: True

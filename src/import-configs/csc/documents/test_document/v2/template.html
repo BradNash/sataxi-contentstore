@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      html {
+        margin: 20px;
+        font-family: "Calibri (Body)";
+      }
+
+      h4,
+      h2 {
+        color: #1768b0;
+      }
+
+      div {
+        width: 95%;
+        margin: 10px;
+      }
+
+      .logo {
+        max-width: 300px;
+      }
+
+      .signature {
+        border-bottom: #333232 dotted 2px;
+      }
+
+      .grid {
+        width: 100%;
+        display: table;
+        border-collapse: separate;
+        border-spacing: 15px;
+      }
+
+      .grid-row {
+        width: 100%;
+        display: table;
+        table-layout: fixed;
+        margin: 0 0 -28px 0;
+      }
+
+      .item {
+        display: table-cell;
+        padding: 2%;
+      }
+
+      .item-color {
+        display: table-cell;
+        padding: 2%;
+      }
+
+      .document-title h2 {
+        float: right;
+        max-width: 260px;
+      }
+
+      .document-title {
+        text-align: end;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      td {
+        font-weight: 600;
+        padding-inline: 0.5rem;
+      }
+
+      @media screen and (max-width: 480px) {
+        .grid-row {
+          display: block;
+          width: 100%;
+          margin: 0;
+        }
+
+        .item {
+          display: block;
+          width: 100%;
+          margin: 0 0 5px 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="grid">
+      <div class="grid-row">
+        <div class="item-color">
+          <img class="logo-image" src="{{SATAXI_LOGO}}" />
+        </div>
+      </div>
+
+      <div class="grid-row document-title">
+        <h2>Confirmation of Finance Paid In Full</h2>
+      </div>
+
+      <div class="grid-row">
+        <h4 style="color: black">To whom it may concern</h4>
+        <table width="100%">
+          <tr>
+            <td width="40" rowspan="3" style="background-color: #b9b9b9">
+              Client Details
+            </td>
+            <td width="40%" height="40">Name of Client</td>
+            <td>{{ CLIENT_FULL_NAME }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td height="18"></td>
+          </tr>
+          <tr height="40">
+            <td width="40%">ID Number of Client</td>
+            <td>{{ CLIENT_ID_NO }}</td>
+          </tr>
+          <tr>
+            <td height="18"></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td width="40" rowspan="3" style="background-color: #b9b9b9">
+              Vehicle Details
+            </td>
+            <td width="40%" height="40">Engine Number</td>
+            <td>{{ ENGINE_NUMBER }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td height="18"></td>
+          </tr>
+          <tr height="40">
+            <td width="40%">VIN (Chassis) Number</td>
+            <td>{{ CHASSIS_NUMBER }}</td>
+          </tr>
+          <tr>
+            <td height="18"></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td width="40" rowspan="3" style="background-color: #b9b9b9">
+              Account Details
+            </td>
+            <td width="40%" height="40">Finance Deal Account Number</td>
+            <td>{{ ACCOUNT_NUMBER }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td height="18"></td>
+          </tr>
+          <tr height="40">
+            <td width="40%">Balance Due and Owing</td>
+            <td>{{ BALANCE_DUE }}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="grid-row">
+        <p>
+          This letter serves to confirm that all financial obligations have been
+          met with respect to the abovementioned vehicle. There are no further
+          financial obligations due in terms of the Credit Agreement and the
+          account can now be considered <b>Paid in Full</b>
+        </p>
+        <p>
+          Should you have any queries in regard to this correspondence, please do not hesitate to contact us.
+        </p>
+
+        <p>Yours faithfully</p>
+      </div>
+
+      <div class="grid-row footer">
+        <img class="signature" src="{{SIGNATURE}}" alt="signature"/>
+        <h5>K. Maleba</h5>
+        <p>Head of Customer Service Supervisor</p>
+        <p>Contact: 011 550 9460</p>
+      </div>
+    </div>
+  </body>
+</html>

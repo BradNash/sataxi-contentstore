@@ -1,0 +1,10 @@
+kind: CorrespondenceImport
+spec:
+  attachments:
+    - userSpecifiedKey: GOMO_FOOTER_V1
+      file: ./v1/footer.png
+  templateSnippets:
+    - identifier: GOMO_EMAIL_FOOTER
+      correspondenceType: EMAIL
+      templateFile: ./v1/template-snippet.html
+      version: 1
